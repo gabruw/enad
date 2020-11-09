@@ -1,0 +1,3 @@
+const AUTHENTICATION_FIELDS = {};
+
+export default AUTHENTICATION_FIELDS;

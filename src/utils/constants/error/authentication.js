@@ -1,0 +1,3 @@
+const AUTHENTICATION_ERRORS = {};
+
+export default AUTHENTICATION_ERRORS;

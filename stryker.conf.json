@@ -1,0 +1,19 @@
+{
+    "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+    "mutate": [
+        "src/**/services/**/*.js?(x)",
+        "src/utils/functions/**/*.js?(x)",
+        "src/utils/formatters/**/*.js?(x)",
+        "!src/**/*@(.test|.spec|Spec).js?(x)",
+        "!src/**/services/**/send-data.js?(x)"
+    ],
+    "mutator": "javascript",
+    "testRunner": "jest",
+    "reporters": ["progress", "clear-text", "html"],
+    "coverageAnalysis": "off",
+    "jest": {
+        "projectType": "custom",
+        "configFile": "./jest.config.js",
+        "enableFindRelatedTests": true
+    }
+}

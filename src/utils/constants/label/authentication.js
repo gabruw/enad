@@ -1,0 +1,3 @@
+const AUTHENTICATION_LABELS = {};
+
+export default AUTHENTICATION_LABELS;
