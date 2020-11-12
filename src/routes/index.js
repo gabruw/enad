@@ -8,7 +8,7 @@ const ROUTES = [
     {
         path: '/',
         exact: true,
-        component: require('../views/home').default
+        component: require('../views/authentication').default
     },
     {
         exact: true,

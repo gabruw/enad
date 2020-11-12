@@ -21,7 +21,7 @@ const TopMenu = ({ setVisible }) => {
             <Menu.Menu position='right'>
                 <Dropdown
                     item
-                    text='Language'
+                    className='hoverItem'
                     trigger={
                         <AvatarTrigger
                             texto='Teste'

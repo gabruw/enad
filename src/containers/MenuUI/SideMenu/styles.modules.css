@@ -1,5 +1,5 @@
 .ui.segment {
-    height: 95.5vh;
+    height: 94vh;
     margin: 0 !important;
     border: 0 !important;
     box-shadow: none !important;
@@ -9,4 +9,5 @@
 .ui.menu {
     margin: 0 !important;
     box-shadow: none !important;
+    background: #fff !important;
 }

@@ -5,9 +5,19 @@
     background: #393e40 !important;
 }
 
+.ui.menu .item {
+    color: #ffffff !important;
+}
+
+.ui.menu .active.item {
+    color: #ffffff !important;
+}
+
 .ui.button {
+    cursor: pointer;
+    color: #ffffff !important;
     box-shadow: none !important;
-    border-radius: 10 !important;
+    border-radius: 0 !important;
     background: transparent !important;
 }
 
@@ -17,7 +27,7 @@
 }
 
 .hoverItem:hover {
-    background: #f2f2f2 !important;
+    background: #616161 !important;
 }
 
 .customItem {

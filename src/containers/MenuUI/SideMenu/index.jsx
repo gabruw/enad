@@ -3,6 +3,7 @@
 import React from 'react';
 import { Menu, Segment, Sidebar } from 'semantic-ui-react';
 import './styles.modules.css';
+import { Icon } from 'semantic-ui-react';
 
 //#endregion
 
@@ -19,9 +20,10 @@ const SideMenu = ({ children, visible, setVisible }) => {
                 visible={visible}
                 onHide={() => setVisible(false)}
             >
-                <Menu.Item as='a'>Home</Menu.Item>
-                <Menu.Item as='a'>Games</Menu.Item>
-                <Menu.Item as='a'>Channels</Menu.Item>
+                <Menu.Item as='a'>
+                    <Icon name='home' size='mini' />
+                    Home
+                </Menu.Item>
             </Sidebar>
 
             <Sidebar.Pusher>{children}</Sidebar.Pusher>
