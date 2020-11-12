@@ -19,16 +19,7 @@ const TopMenu = ({ setVisible }) => {
             </Menu.Menu>
 
             <Menu.Menu position='right'>
-                <Dropdown
-                    item
-                    className='hoverItem'
-                    trigger={
-                        <AvatarTrigger
-                            texto='Teste'
-                            image='https://allextruded.com/templates/allextruded/img/user.jpg'
-                        />
-                    }
-                >
+                <Dropdown item className='hoverItem' trigger={<AvatarTrigger texto='Teste' image={undefined} />}>
                     <Dropdown.Menu>
                         <Dropdown.Header content='Configurações' icon='settings' />
                         <Dropdown.Item>Logout</Dropdown.Item>

@@ -8,7 +8,7 @@ import IMAGE from 'utils/constants/image';
 
 const AvatarTrigger = ({ texto, image }) => (
     <span>
-        <Image avatar src={image ? image : IMAGE.DEFAULT_USER} />
+        <Image avatar src={image || IMAGE.DEFAULT_USER} />
         {texto}
     </span>
 );
