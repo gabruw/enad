@@ -12,13 +12,18 @@ const ROUTES = [
     },
     {
         exact: true,
-        path: ROUTE_NAME.AUTHENTICATION,
+        path: ROUTE_NAME.OUT.AUTHENTICATION,
         component: require('../views/authentication').default
     },
     {
         exact: true,
-        path: ROUTE_NAME.HOME,
+        path: ROUTE_NAME.OUT.HOME,
         component: require('../views/authentication').default
+    },
+    {
+        exact: true,
+        path: ROUTE_NAME.IN.HOME,
+        component: require('../views/home').default
     },
     {
         path: '*',

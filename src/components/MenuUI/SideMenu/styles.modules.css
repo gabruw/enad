@@ -1,0 +1,12 @@
+.ui.segment {
+    height: 95.5vh;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.ui.menu {
+    margin: 0 !important;
+    box-shadow: none !important;
+}

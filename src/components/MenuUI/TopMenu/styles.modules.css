@@ -1,0 +1,25 @@
+.ui.menu {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #393e40 !important;
+}
+
+.ui.button {
+    box-shadow: none !important;
+    border-radius: 10 !important;
+    background: transparent !important;
+}
+
+.ui.icon.button,
+.ui.icon.buttons .button {
+    padding: 1.5em !important;
+}
+
+.hoverItem:hover {
+    background: #f2f2f2 !important;
+}
+
+.customItem {
+    padding: 0 !important;
+}

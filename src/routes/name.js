@@ -1,7 +1,11 @@
 const ROUTE_NAME = {
-    HOME: '/home',
-    ERROR: '/error',
-    AUTHENTICATION: '/authentication'
+    OUT: {
+        HOME: '/home',
+        AUTHENTICATION: '/authentication'
+    },
+    IN: {
+        HOME: '/system/home'
+    }
 };
 
 export default ROUTE_NAME;
