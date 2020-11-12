@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+import IMAGE from 'utils/constants/image';
 
 //#endregion
 
 const AvatarTrigger = ({ texto, image }) => (
     <span>
-        <Image avatar src={image} />
+        <Image avatar src={image ? image : IMAGE.DEFAULT_USER} />
         {texto}
     </span>
 );
