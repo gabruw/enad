@@ -3,7 +3,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
-import SIDEMENU_OPTIONS from 'utils/constants/routes/side-menu';
+import SIDEMENU_OPTIONS from 'routes/side-menu';
 import './styles.modules.css';
 
 //#endregion

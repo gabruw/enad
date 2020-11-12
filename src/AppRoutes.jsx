@@ -1,9 +1,9 @@
 //#region Imports
 
+import MenuUI from 'containers/MenuUI';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import MenuUI from './containers/MenuUI/index';
-import ROUTES from './utils/constants/routes/routes';
+import ROUTES from 'routes/routes';
 
 //#endregion
 
