@@ -1,6 +1,6 @@
 //#region Imports
 
-import ROUTE_NAME from './name';
+import ROUTE_NAME from 'utils/constants/routes/route-name';
 
 //#endregion
 
@@ -8,27 +8,27 @@ const ROUTES = [
     {
         path: '/',
         exact: true,
-        component: require('../views/authentication').default
+        component: require('../../../views/authentication').default
     },
     {
         exact: true,
         path: ROUTE_NAME.OUT.AUTHENTICATION,
-        component: require('../views/authentication').default
+        component: require('../../../views/authentication').default
     },
     {
         exact: true,
         path: ROUTE_NAME.OUT.HOME,
-        component: require('../views/authentication').default
+        component: require('../../../views/authentication').default
     },
     {
         exact: true,
         path: ROUTE_NAME.IN.HOME,
-        component: require('../views/home').default
+        component: require('../../../views/home').default
     },
     {
         path: '*',
         exact: true,
-        component: require('../views/error').default
+        component: require('../../../views/error').default
     }
 ];
 

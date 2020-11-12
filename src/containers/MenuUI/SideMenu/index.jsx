@@ -1,29 +1,36 @@
 //#region Imports
 
 import React from 'react';
-import { Menu, Segment, Sidebar } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
+import SIDEMENU_OPTIONS from 'utils/constants/routes/side-menu';
 import './styles.modules.css';
-import { Icon } from 'semantic-ui-react';
 
 //#endregion
 
 const SideMenu = ({ children, visible, setVisible }) => {
+    const history = useHistory();
+
     return (
         <Sidebar.Pushable as={Segment}>
             <Sidebar
-                as={Menu}
                 inverted
                 vertical
+                as={Menu}
                 width='thin'
                 icon='labeled'
                 animation='push'
                 visible={visible}
                 onHide={() => setVisible(false)}
             >
-                <Menu.Item as='a'>
-                    <Icon name='home' size='mini' />
-                    Home
-                </Menu.Item>
+                {SIDEMENU_OPTIONS.map((opt, index) => (
+                    <Menu.Item key={index} as='a' onClick={() => history.push(opt.path)}>
+                        <div className='option'>
+                            <Icon name={opt.icon} />
+                            <span className='text'>{opt.text}</span>
+                        </div>
+                    </Menu.Item>
+                ))}
             </Sidebar>
 
             <Sidebar.Pusher>{children}</Sidebar.Pusher>
