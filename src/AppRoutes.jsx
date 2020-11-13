@@ -1,6 +1,6 @@
 //#region Imports
 
-import MenuUI from 'containers/MenuUI';
+import RoutesFilter from 'components/RoutesFilter';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ROUTES from 'routes/routes';
@@ -12,7 +12,7 @@ const AppRoutes = () => (
         <Switch>
             {ROUTES.map(({ path, exact, component }) => (
                 <Route key={path} path={path} exact={exact}>
-                    <MenuUI>{component}</MenuUI>
+                    <RoutesFilter>{component}</RoutesFilter>
                 </Route>
             ))}
         </Switch>

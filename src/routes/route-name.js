@@ -1,6 +1,7 @@
 const ROUTE_NAME = {
     OUT: {
         HOME: '/home',
+        ERROR: '/error',
         AUTHENTICATION: '/authentication'
     },
     IN: {
