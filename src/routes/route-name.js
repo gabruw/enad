@@ -5,7 +5,8 @@ const ROUTE_NAME = {
         AUTHENTICATION: '/authentication'
     },
     IN: {
-        HOME: '/system/home'
+        HOME: '/system/home',
+        CATEGORY: '/system/category'
     }
 };
 
