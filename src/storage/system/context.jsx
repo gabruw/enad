@@ -1,7 +1,6 @@
 //#region Imports
 
 import { createContext, useCallback, useContext, useState } from 'react';
-import LOGIN_FIELDS from 'utils/constants/field/login';
 import USER_FIELDS from 'utils/constants/field/user';
 
 //#endregion
@@ -12,7 +11,7 @@ const initialState = {
     [USER_FIELDS.THIS]: null
 };
 
-export const SystemContextProvider = ({ children }) => {
+export const SystemContextProvider = ({ children, defaultValues }) => {
     const [state, setState] = useState({ ...initialState, ...defaultValues });
 
     const addUser = useCallback(
@@ -34,13 +33,13 @@ export const SystemContextProvider = ({ children }) => {
         }));
     }, [setState]);
 
-    return <SystemContext.Provider value={{ addUser, editUser, removeUser, state }}>{children}</SystemContext.Provider>;
+    return <SystemContext.Provider value={{ addUser, removeUser, state }}>{children}</SystemContext.Provider>;
 };
 
 const useSystemContext = () => {
-    const { addUser, editUser, removeUser, state } = useContext(SystemContext);
+    const { addUser, removeUser, state } = useContext(SystemContext);
 
-    return { addUser, editUser, removeUser, ...state };
+    return { addUser, removeUser, ...state };
 };
 
 export default useSystemContext;

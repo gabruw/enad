@@ -1,6 +1,6 @@
 //#region Imports
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import './styles.modules.css';
 

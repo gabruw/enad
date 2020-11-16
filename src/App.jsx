@@ -4,6 +4,7 @@ import 'assets/css/global.css';
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { SystemContextProvider } from 'storage/system/context';
+import USER_FIELDS from 'utils/constants/field/user';
 import AppRoutes from './AppRoutes';
 
 //#endregion
