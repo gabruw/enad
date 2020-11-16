@@ -11,7 +11,7 @@ const TopMenu = ({ setVisible }) => (
     <Menu stackable>
         <Menu.Menu position='left'>
             <Menu.Item className='customItem'>
-                <Button icon className='hoverItem' onClick={() => setVisible(true)}>
+                <Button icon className='hoverItem' id='hamburguerButton' onClick={() => setVisible(true)}>
                     <Icon name='align justify' />
                 </Button>
             </Menu.Item>

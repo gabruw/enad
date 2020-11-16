@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import useSystemReducer from 'storage/system/reducer';
-import verifyRoute from 'utils/constants/function/verifyRoute';
+import verifyRoute from 'utils/functions/verifyRoute';
 
 //#endregion
 

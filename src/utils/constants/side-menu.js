@@ -1,6 +1,6 @@
 //#region Imports
 
-import ROUTE_NAME from './route-name';
+import ROUTE_NAME from 'routes/route-name';
 
 //#endregion
 

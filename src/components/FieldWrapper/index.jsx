@@ -6,16 +6,26 @@ import './styles.modules.css';
 
 //#endregion
 
-const FieldWrapper = ({ as, name, errors, ...rest }) => {
-    const error = errors && errors[name];
+const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
+    const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
-        <div className='fieldContainer'>
+        <div className='content'>
             <div className='field'>
-                <Controller as={as} name={name} error={error} {...rest} />
+                <label>{label}</label>
+                <Controller
+                    as={as}
+                    name={name}
+                    label={label}
+                    defaultValue=''
+                    variant='outlined'
+                    error={Boolean(error)}
+                    className='controller'
+                    {...rest}
+                />
             </div>
 
-            {error && <div className='fieldError'>{error.message}</div>}
+            {error && <div className='error'>{error.message}</div>}
         </div>
     );
 };

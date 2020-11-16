@@ -2,7 +2,7 @@
 
 import MenuUI from 'containers/MenuUI';
 import React, { useMemo } from 'react';
-import verifyRoute from 'utils/constants/function/verifyRoute';
+import verifyRoute from 'utils/functions/verifyRoute';
 import useCheckCredentials from 'utils/hooks/useCheckCredentials';
 
 //#endregion

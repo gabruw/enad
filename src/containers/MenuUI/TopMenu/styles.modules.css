@@ -13,7 +13,7 @@
     color: #ffffff !important;
 }
 
-.ui.button {
+#hamburguerButton {
     cursor: pointer;
     color: #ffffff !important;
     box-shadow: none !important;
