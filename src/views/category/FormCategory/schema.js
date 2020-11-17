@@ -6,7 +6,7 @@ import * as yup from 'yup';
 //#endregion
 
 const categorySchema = yup.object().shape({
-    [CATEGORY_FIELDS.NAME]: yup.string().required()
+    [CATEGORY_FIELDS.DESCRIPTION]: yup.string().required().max(255)
 });
 
 export default categorySchema;

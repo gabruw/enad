@@ -11,16 +11,15 @@ const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
 
     return (
         <div className='content'>
-            <div className='field'>
-                <label>{label}</label>
+            <div className='input'>
                 <Controller
                     as={as}
                     name={name}
-                    label={label}
                     defaultValue=''
                     variant='outlined'
                     error={Boolean(error)}
                     className='controller'
+                    label={<span className='label'>{label}</span>}
                     {...rest}
                 />
             </div>

@@ -1,6 +1,6 @@
 const CATEGORY_FIELDS = {
     THIS: 'category',
-    NAME: 'name'
+    DESCRIPTION: 'description'
 };
 
 export default CATEGORY_FIELDS;

@@ -1,6 +1,6 @@
 const CATEGORY_LABELS = {
-    THIS: 'Category',
-    NAME: 'Name'
+    THIS: 'Categoria',
+    DESCRIPTION: 'Descrição'
 };
 
 export default CATEGORY_LABELS;
