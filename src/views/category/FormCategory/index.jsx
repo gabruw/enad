@@ -6,17 +6,23 @@ import MessageBox from 'components/MessageBox';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Button, Form } from 'semantic-ui-react';
+import useCategoryContext from 'storage/category/context';
 import CATEGORY_FIELDS from 'utils/constants/field/category';
 import CATEGORY_LABELS from 'utils/constants/label/category';
+import editMerge from 'utils/functions/editMerge';
+import isPresent from 'utils/functions/isPresent';
 import useRequestState from 'utils/hooks/useRequestState';
-import { includeCategory } from '../services/send-data';
+import { editCategory, includeCategory } from '../services/send-data';
 import categorySchema from './schema';
 import styles from './styles.modules.css';
 
 //#endregion
 
 const FormCategory = () => {
+    const { selected } = useCategoryContext();
+
     const methods = useForm({
+        defaultValues: selected,
         reValidateMode: 'onBlur',
         resolver: yupResolver(categorySchema)
     });
@@ -25,9 +31,14 @@ const FormCategory = () => {
     const { run, requestState } = useRequestState();
     const onSubmit = useCallback(
         async (data) => {
-            await run(() => includeCategory(data));
+            if (isPresent(selected)) {
+                data = editMerge(data, selected);
+                await run(() => editCategory(data));
+            } else {
+                await run(() => includeCategory(data));
+            }
         },
-        [run]
+        [run, selected]
     );
 
     return (

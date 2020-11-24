@@ -1,4 +1,4 @@
-const COLOR = {
+const PALLET = {
     LIGHT_RED: '#F23054',
     MEDIUM_RED: '#C83315',
     DARK_RED: '#A63247',
@@ -11,4 +11,4 @@ export const SHADOW = {
     DARK_GREY: '#616161'
 };
 
-export default COLOR;
+export default PALLET;
