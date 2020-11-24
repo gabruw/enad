@@ -1,7 +1,9 @@
 //#region Imports
 
+import AES from 'crypto-js/aes';
 import { createContext, useCallback, useContext, useState } from 'react';
 import USER_FIELDS from 'utils/constants/field/user';
+import KEY from 'utils/constants/key';
 
 //#endregion
 
@@ -16,7 +18,9 @@ export const SystemContextProvider = ({ children, defaultValues }) => {
 
     const addUser = useCallback(
         (user) => {
-            localStorage.setItem([USER_FIELDS.THIS], JSON.stringify(user));
+            const encrypted = AES.encrypt(user, KEY.LOCAL_STORAGE);
+            localStorage.setItem([USER_FIELDS.THIS], JSON.stringify(encrypted));
+
             setState((prevState) => ({
                 ...prevState,
                 user

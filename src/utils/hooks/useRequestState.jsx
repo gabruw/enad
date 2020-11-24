@@ -21,8 +21,8 @@ const useRequestState = () => {
         async (callback, options) => {
             setRequestState({ ...initalState, isLoading: true, success: undefined });
 
-            if (options?.sleep) {
-                await sleep(options?.sleepTimeout || 3000);
+            if (options && options.sleep) {
+                await sleep(options.sleepTimeout || 3000);
             }
 
             let responseObj = null;
@@ -30,7 +30,7 @@ const useRequestState = () => {
                 const { data: result } = await callback();
                 responseObj = { ...initalState, data: result, success: true };
             } catch (error) {
-                if (options?.autoClear) {
+                if (options && options.autoClear) {
                     clear(5000);
                 }
 
