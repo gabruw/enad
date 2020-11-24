@@ -11,7 +11,7 @@ import CATEGORY_LABELS from 'utils/constants/label/category';
 import useRequestState from 'utils/hooks/useRequestState';
 import { includeCategory } from '../services/send-data';
 import categorySchema from './schema';
-import './styles.modules.css';
+import styles from './styles.modules.css';
 
 //#endregion
 
@@ -30,12 +30,10 @@ const FormCategory = () => {
         [run]
     );
 
-    console.log(requestState);
-
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='field'>
+                <div className={styles.field}>
                     <FieldWrapper
                         as={Form.Input}
                         errors={errors}
@@ -44,7 +42,7 @@ const FormCategory = () => {
                     />
                 </div>
 
-                <div className='buttonContent'>
+                <div className={styles.buttonContent}>
                     <Button type='submit' primary>
                         Salvar
                     </Button>
