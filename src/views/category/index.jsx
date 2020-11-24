@@ -1,5 +1,6 @@
 //#region Imports
 
+import ModalUI from 'containers/ModalUI';
 import React, { Fragment, useEffect } from 'react';
 import useCategoryContext, { CategoryContextProvider } from 'storage/category/context';
 import FormCategory from './FormCategory';
@@ -21,7 +22,9 @@ const Provider = () => {
 
     return (
         <Fragment>
-            <FormCategory />
+            <ModalUI ref={modalRef} title='Adicionar Categoria' icon='plus'>
+                <FormCategory />
+            </ModalUI>
         </Fragment>
     );
 };
