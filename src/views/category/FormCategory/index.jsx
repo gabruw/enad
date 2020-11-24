@@ -14,7 +14,7 @@ import isPresent from 'utils/functions/isPresent';
 import useRequestState from 'utils/hooks/useRequestState';
 import { editCategory, includeCategory } from '../services/send-data';
 import categorySchema from './schema';
-import styles from './styles.modules.css';
+import styles from './styles.module.css';
 
 //#endregion
 

@@ -1,0 +1,39 @@
+.segment {
+    width: 100%;
+    padding-top: 20;
+}
+
+.title {
+    margin-bottom: 5;
+}
+
+.content {
+    margin-top: 30;
+}
+
+.buttonContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.button {
+    padding: 10;
+    margin-bottom: 30;
+}
+
+.icon {
+    color: '#FFFFFF';
+}

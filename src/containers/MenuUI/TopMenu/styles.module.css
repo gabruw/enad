@@ -1,35 +1,27 @@
-.ui.menu {
+.menu {
     margin: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     background: #393e40 !important;
 }
 
-.ui.menu .item {
+.item {
+    padding: 0 !important;
+}
+
+.icon {
     color: #ffffff !important;
 }
 
-.ui.menu .active.item {
-    color: #ffffff !important;
-}
-
-#hamburguerButton {
-    cursor: pointer;
+.hamburguerButton {
+    width: 55px;
+    height: 55px;
     color: #ffffff !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     background: transparent !important;
 }
 
-.ui.icon.button,
-.ui.icon.buttons .button {
-    padding: 1.5em !important;
-}
-
 .hoverItem:hover {
     background: #616161 !important;
-}
-
-.customItem {
-    padding: 0 !important;
 }
