@@ -13,7 +13,7 @@ const DataList = () => (
                 <Table.Row>
                     <Table.HeaderCell>Header</Table.HeaderCell>
                     <Table.HeaderCell>Header</Table.HeaderCell>
-                    <Table.HeaderCell>Header</Table.HeaderCell>
+                    <Table.HeaderCell>Ações</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
 

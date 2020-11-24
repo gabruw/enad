@@ -7,12 +7,17 @@ import styles from './styles.module.css';
 
 //#endregion
 
-const ContextBox = ({ title, children, onClick, research, buttonText, isLoading = false }) => {
+const ContextBox = ({ title, icon, children, onClick, research, buttonText, isLoading = false }) => {
     return (
         <Segment className={styles.segment}>
-            <div className={styles.title}>
-                <div>{title}</div>
+            <div className={styles.header}>
+                <div className={styles.headerIconContent}>
+                    <Icon name={icon} className={styles.headerIcon} />
+                </div>
+                <span className={styles.title}>{title}</span>
             </div>
+
+            <hr className={styles.divider} />
 
             <div className={styles.content}>
                 <div className={styles.buttonContent}>
@@ -20,9 +25,9 @@ const ContextBox = ({ title, children, onClick, research, buttonText, isLoading 
                         <ButtonUI
                             isLoading={isLoading}
                             className={styles.button}
-                            onClick={async () => await research()}
+                            onClick={async () => research && (await research())}
                         >
-                            <Icon name='redo' />
+                            <Icon name='redo' className={styles.research} />
                         </ButtonUI>
                     </div>
 

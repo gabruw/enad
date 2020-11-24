@@ -28,7 +28,7 @@ const Provider = () => {
                 <FormCategory />
             </ModalUI>
 
-            <ContextBox buttonText='Adicionar Categoria'>
+            <ContextBox title='Categorias' icon='list' buttonText='Adicionar Categoria'>
                 <DataList />
             </ContextBox>
         </Fragment>
