@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
-import './styles.modules.css';
+import styles from './styles.module.css';
 
 //#endregion
 
@@ -10,21 +10,21 @@ const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
     const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
-        <div className='content'>
-            <div className='input'>
+        <div className={styles.content}>
+            <div className={styles.input}>
                 <Controller
                     as={as}
                     name={name}
                     defaultValue=''
                     variant='outlined'
                     error={Boolean(error)}
-                    className='controller'
+                    className={styles.controller}
                     label={<span className='label'>{label}</span>}
                     {...rest}
                 />
             </div>
 
-            {error && <div className='error'>{error.message}</div>}
+            {error && <div className={styles.error}>{error.message}</div>}
         </div>
     );
 };

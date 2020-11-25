@@ -8,7 +8,9 @@ const ROUTE_NAME = {
     },
     IN: {
         HOME: '/system/home',
-        CATEGORY: '/system/category'
+        USER: '/system/user',
+        CATEGORY: '/system/category',
+        USER_TYPE: '/system/user-type'
     }
 };
 
