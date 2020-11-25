@@ -8,17 +8,22 @@ const ROUTES = [
     {
         path: '/',
         exact: true,
-        component: require('../views/authentication').default
+        component: require('../views/authentication/registration').default
     },
     {
         exact: true,
-        path: ROUTE_NAME.OUT.AUTHENTICATION,
-        component: require('../views/authentication').default
+        path: ROUTE_NAME.OUT.LOGIN,
+        component: require('../views/authentication/login').default
+    },
+    {
+        exact: true,
+        path: ROUTE_NAME.OUT.REGISTRATION,
+        component: require('../views/authentication/registration').default
     },
     {
         exact: true,
         path: ROUTE_NAME.OUT.HOME,
-        component: require('../views/authentication').default
+        component: require('../views/authentication/login').default
     },
     {
         exact: true,
