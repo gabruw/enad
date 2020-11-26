@@ -7,6 +7,7 @@
 
 .logo {
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .image {
@@ -16,6 +17,15 @@
 
 .field {
     width: 100%;
+    padding: 8px 80px;
+}
+
+.button {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer {
@@ -24,43 +34,10 @@
 
 .strong {
     cursor: pointer;
-    color: #094c72;
+    color: #026aa7;
     margin-left: 5px;
 }
 
-.button {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
-.grid {
-    justify-content: center;
-    align-items: center;
-    margin-top: 22px !important;
-}
-
-.logo {
-    margin-top: 131px !important;
-}
-
-.iptEmail {
-    margin-top: 40px;
-    margin-bottom: 18px;
-}
-
-.iptPassword {
-    margin-bottom: 23px;
-}
-
-.btLogin {
-    margin-bottom: 35px;
-    margin-right: 34px;
-}
-
-.btRegister {
-    margin-right: 30px;
+.strong:hover {
+    color: #0079bf;
 }
