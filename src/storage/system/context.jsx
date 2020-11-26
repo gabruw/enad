@@ -1,9 +1,8 @@
 //#region Imports
 
-import AES from 'crypto-js/aes';
 import { createContext, useCallback, useContext, useState } from 'react';
 import USER_FIELDS from 'utils/constants/field/user';
-import KEY from 'utils/constants/key';
+import secureStorage from 'utils/functions/secureStorage';
 
 //#endregion
 
@@ -13,14 +12,12 @@ const initialState = {
     [USER_FIELDS.THIS]: null
 };
 
-export const SystemContextProvider = ({ children, defaultValues }) => {
+export const SystemContextProvider = ({ children, defaultValues = {} }) => {
     const [state, setState] = useState({ ...initialState, ...defaultValues });
 
     const addUser = useCallback(
         (user) => {
-            console.log('user', user);
-            const encrypted = AES.encrypt(user, KEY.LOCAL_STORAGE);
-            localStorage.setItem([USER_FIELDS.THIS], user);
+            secureStorage.setItem([USER_FIELDS.THIS], user);
 
             setState((prevState) => ({
                 ...prevState,
@@ -31,7 +28,8 @@ export const SystemContextProvider = ({ children, defaultValues }) => {
     );
 
     const removeUser = useCallback(() => {
-        localStorage.removeItem([USER_FIELDS.THIS]);
+        secureStorage.removeItem([USER_FIELDS.THIS]);
+
         setState((prevState) => ({
             ...prevState,
             [USER_FIELDS.THIS]: initialState[USER_FIELDS.THIS]

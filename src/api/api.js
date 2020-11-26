@@ -1,10 +1,10 @@
 //#region Imports
 
 import axios from 'axios';
-import ENDPOINT from './endpoint';
 import USER_FIELDS from 'utils/constants/field/user';
-import AES from 'crypto-js/aes';
-import KEY from 'utils/constants/key';
+import secureStorage from 'utils/functions/secureStorage';
+import ENDPOINT from './endpoint';
+import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 
 //#endregion
 
@@ -18,11 +18,10 @@ const API = axios.create({
 });
 
 API.interceptors.request.use((config) => {
-    const user = JSON.parse(localStorage.getItem([USER_FIELDS.THIS]));
-    const data = AES.decrypt(user, KEY.LOCAL_STORAGE);
+    const user = secureStorage.getItem([USER_FIELDS.THIS]);
 
-    if (data && data.token) {
-        config.headers.Authorization = `Bearer ${data.token}`;
+    if (user && user[AUTHENTICATION_FIELDS.TOKEN]) {
+        config.headers.Authorization = `Bearer ${user[AUTHENTICATION_FIELDS.TOKEN]}`;
     }
 
     return config;

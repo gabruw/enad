@@ -13,7 +13,7 @@ import useSystemContext from 'storage/system/context';
 import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import AUTHENTICATION_LABELS from 'utils/constants/label/authentication';
 import useRequestState from 'utils/hooks/useRequestState';
-import { login } from './../services/send-data';
+import { login } from './../services/get-data';
 import loginSchema from './schema';
 import styles from './styles.module.css';
 
@@ -34,14 +34,12 @@ const Login = ({ setIsLogin }) => {
 
     const onSubmit = useCallback(
         async (data) => {
-            await sendLogin(data);
-
-            // if (requestState.success) {
-            // addUser(requestState.data);
-            //     history.push(ROUTE_NAME.IN.HOME);
-            // }
+            await sendLogin(data).then((response) => {
+                addUser(response.data);
+                history.push(ROUTE_NAME.IN.HOME);
+            });
         },
-        [sendLogin, requestState, addUser, history]
+        [sendLogin, addUser, history]
     );
 
     return (
@@ -90,7 +88,8 @@ const Login = ({ setIsLogin }) => {
                         <Grid.Row>
                             <Grid.Column width={7} className={styles.btRegister}>
                                 <Label key='medium' size='medium' onClick={() => setIsLogin(false)}>
-                                    Deseja criar uma conta, <strong>clique aqui</strong>
+                                    Ainda não possuí um cadastro?
+                                    <strong>Clique aqui</strong>
                                 </Label>
                             </Grid.Column>
                         </Grid.Row>

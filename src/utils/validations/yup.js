@@ -1,8 +1,8 @@
 //#region Imports
 
-import ERROR_MESSAGES from 'utils/constants/error/yup';
 import * as yup from 'yup';
 import isCPFValid from './cpf';
+import YUP_ERRORS from 'utils/constants/error/yup';
 
 //#endregion
 
@@ -11,7 +11,7 @@ import isCPFValid from './cpf';
  */
 const validateIfNotEmpty = (callback) => (val) => (val ? callback(val) : true);
 
-const cpf = (message) => yup.string().test('cpf', message || ERROR_MESSAGES.CPF, validateIfNotEmpty(isCPFValid));
+const cpf = (message) => yup.string().test('cpf', message || YUP_ERRORS.CPF, validateIfNotEmpty(isCPFValid));
 yup.addMethod(yup.string, 'cpf', cpf);
 
 /**

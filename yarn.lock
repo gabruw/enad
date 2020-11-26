@@ -5267,6 +5267,11 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
+generate-js@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/generate-js/-/generate-js-3.1.2.tgz#25ff8dd4c38090a938f648887d536bad46b47b62"
+  integrity sha1-Jf+N1MOAkKk49kiIfVNrrUa0e2I=
+
 gensync@^1.0.0-beta.1:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz"
@@ -9938,6 +9943,13 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+secure-web-storage@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/secure-web-storage/-/secure-web-storage-1.0.2.tgz#7309c35c3685f0a9e63a8c4964c6ecdc0f83839c"
+  integrity sha1-cwnDXDaF8KnmOoxJZMbs3A+Dg5w=
+  dependencies:
+    generate-js "^3.1.2"
 
 select-hose@^2.0.0:
   version "2.0.0"

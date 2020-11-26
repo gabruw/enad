@@ -6,3 +6,5 @@ import ENDPOINT from 'api/endpoint';
 //#endregion
 
 export const login = (data) => API.post(ENDPOINT.AUTHENTICATION.LOGIN, data);
+
+export const refresh = (data) => API.post(ENDPOINT.AUTHENTICATION.REFRESH, data);

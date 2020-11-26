@@ -1,7 +1,8 @@
 const ENDPOINT = {
     BASE: 'http://localhost:8666',
     AUTHENTICATION: {
-        LOGIN: '/authentication/login'
+        LOGIN: '/authentication/login',
+        REFRESH: '/authentication/refresh'
     },
     USER: {
         EDIT: '/user/edit',
