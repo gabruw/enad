@@ -1,22 +1,14 @@
 //#region Imports
 
-import React, { Fragment } from 'react';
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
+import React from 'react';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 //#endregion
 
 const ScreenLoader = ({ isLoading }) => (
-    <Fragment>
-        {isLoading && (
-            <Segment>
-                <Dimmer active>
-                    <Loader>Loading</Loader>
-                </Dimmer>
-
-                <Image src='/images/wireframe/short-paragraph.png' />
-            </Segment>
-        )}
-    </Fragment>
+    <Dimmer active={isLoading}>
+        <Loader>Carregando</Loader>
+    </Dimmer>
 );
 
 export default ScreenLoader;

@@ -1,3 +1,8 @@
+.content {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
 .bloco {
     margin-left: 580px;
     width: 500px;

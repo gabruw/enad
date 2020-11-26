@@ -38,13 +38,13 @@ const Authentication = () => {
     }, [canRefresh, fetchToken, addUser, user, history, removeUser]);
 
     return (
-        <Fragment>
+        <div className={styles.content}>
             <ScreenLoader isLoading={requestState.isLoading} />
 
             <div className={styles.bloco}>
                 <Login setCanRefresh={setCanRefresh} />
             </div>
-        </Fragment>
+        </div>
     );
 };
 
