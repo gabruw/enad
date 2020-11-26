@@ -1,38 +1,51 @@
 //#region Imports
 
-import React, { useCallback, useEffect } from 'react';
-import useHistory from 'react-router-dom';
+import ScreenLoader from 'components/ScreenLoader';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
-import USER_FIELDS from 'utils/constants/field/user';
-import useSecureStorage from 'utils/hooks/useLocalStorage';
-import useRequestState from 'utils/hooks/useRequestState';
-import { refresh } from './services/get-data';
 import useSystemContext from 'storage/system/context';
 import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
+import USER_FIELDS from 'utils/constants/field/user';
+import secureStorage from 'utils/functions/secureStorage';
+import useRequestState from 'utils/hooks/useRequestState';
+import Login from './login';
+import { refresh } from './services/get-data';
+import styles from './styles.module.css';
 
 //#endregion
 
 const Authentication = () => {
     const history = useHistory();
-    const storage = useSecureStorage();
-    const { user, addUser } = useSystemContext();
+    const [canRefresh, setCanRefresh] = useState(true);
+    const { user, addUser, removeUser } = useSystemContext();
 
     const { run, requestState } = useRequestState();
-    const fetchToken = useCallback((data) => run(async () => await refresh(data)), [run]);
+    const fetchToken = useCallback(() => run(async () => await refresh()), [run]);
 
     useEffect(() => {
-        const localUser = storage.getItem([USER_FIELDS.THIS]);
-        if (localUser) {
-            fetchToken(localUser)
-                .then(({ data }) => {
-                    addUser({ ...user, [AUTHENTICATION_FIELDS.TOKEN]: data[AUTHENTICATION_FIELDS.TOKEN] });
-                    history.push(ROUTE_NAME.IN.HOME);
-                })
-                .catch(() => storage.removeItem([USER_FIELDS.THIS]));
+        if (canRefresh) {
+            const localUser = secureStorage.getItem([USER_FIELDS.THIS]);
+            if (localUser) {
+                fetchToken()
+                    .then(({ data }) => {
+                        addUser({ ...user, [AUTHENTICATION_FIELDS.TOKEN]: data[AUTHENTICATION_FIELDS.TOKEN] });
+                        history.push(ROUTE_NAME.IN.HOME);
+                    })
+                    .catch(() => removeUser());
+            }
         }
-    }, [fetchToken, storage, history]);
+    }, [canRefresh, fetchToken, addUser, user, history, removeUser]);
 
-    return <></>;
+    return (
+        <Fragment>
+            <ScreenLoader isLoading={requestState.isLoading} />
+
+            <div className={styles.bloco}>
+                <Login setCanRefresh={setCanRefresh} />
+            </div>
+        </Fragment>
+    );
 };
 
 export default Authentication;

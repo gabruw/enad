@@ -25,12 +25,3 @@
 .btRegister {
     margin-right: 30px;
 }
-
-.bloco {
-    margin-left: 580px;
-    width: 500px;
-    height: 700px;
-    -webkit-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
-    -moz-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
-    box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
-}

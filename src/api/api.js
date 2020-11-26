@@ -1,10 +1,10 @@
 //#region Imports
 
 import axios from 'axios';
+import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import USER_FIELDS from 'utils/constants/field/user';
 import secureStorage from 'utils/functions/secureStorage';
 import ENDPOINT from './endpoint';
-import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 
 //#endregion
 
