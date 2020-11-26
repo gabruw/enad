@@ -19,7 +19,7 @@ const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
                     variant='outlined'
                     error={Boolean(error)}
                     className={styles.controller}
-                    label={<span className={styles.label}>{label}</span>}
+                    label={<div className={styles.label}>{label}</div>}
                     {...rest}
                 />
             </div>

@@ -9,6 +9,7 @@ import styles from './styles.module.css';
 
 const ButtonUI = ({
     text,
+    width,
     endIcon,
     children,
     startIcon,
@@ -20,7 +21,7 @@ const ButtonUI = ({
     <Button
         loading={isLoading}
         disabled={isDisabled || isLoading}
-        style={{ background: COLOR[color], color: '#FFFFFF' }}
+        style={{ background: COLOR[color], color: '#FFFFFF', width: width }}
         {...rest}
     >
         <div className={styles.content}>

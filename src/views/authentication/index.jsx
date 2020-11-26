@@ -1,9 +1,10 @@
 //#region Imports
 
 import ScreenLoader from 'components/ScreenLoader';
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
+import { Segment } from 'semantic-ui-react';
 import useSystemContext from 'storage/system/context';
 import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import USER_FIELDS from 'utils/constants/field/user';
@@ -41,9 +42,9 @@ const Authentication = () => {
         <div className={styles.content}>
             <ScreenLoader isLoading={requestState.isLoading} />
 
-            <div className={styles.bloco}>
+            <Segment className={styles.segment}>
                 <Login setCanRefresh={setCanRefresh} />
-            </div>
+            </Segment>
         </div>
     );
 };

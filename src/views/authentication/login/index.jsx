@@ -8,7 +8,7 @@ import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
-import { Form, Grid, Image, Label } from 'semantic-ui-react';
+import { Form, Image } from 'semantic-ui-react';
 import useSystemContext from 'storage/system/context';
 import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import AUTHENTICATION_LABELS from 'utils/constants/label/authentication';
@@ -46,54 +46,44 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Grid container className={styles.grid}>
-                    <Grid.Row className={styles.logo}>
-                        <Grid.Column verticalAlign='middle'>
-                            <Image src={Logo} size='small' centered />
-                        </Grid.Column>
-                    </Grid.Row>
+                <div className={styles.content}>
+                    <div className={styles.logo}>
+                        <Image src={Logo} className={styles.image} centered />
+                    </div>
 
-                    <Grid.Row>
-                        <Grid.Column width={8}>
-                            <FieldWrapper
-                                as={Form.Input}
-                                errors={errors}
-                                placeholder='email@email.com'
-                                name={AUTHENTICATION_FIELDS.EMAIL}
-                                label={AUTHENTICATION_LABELS.EMAIL}
-                            />
-                        </Grid.Column>
-                    </Grid.Row>
+                    <div className={styles.field}>
+                        <FieldWrapper
+                            as={Form.Input}
+                            errors={errors}
+                            placeholder='email@email.com'
+                            name={AUTHENTICATION_FIELDS.EMAIL}
+                            label={AUTHENTICATION_LABELS.EMAIL}
+                        />
+                    </div>
 
-                    <Grid.Row>
-                        <Grid.Column verticalAlign='middle' className={styles.iptPassword} width={8}>
-                            <FieldWrapper
-                                as={Form.Input}
-                                errors={errors}
-                                type='password'
-                                name={AUTHENTICATION_FIELDS.PASSWORD}
-                                label={AUTHENTICATION_LABELS.PASSWORD}
-                            />
-                        </Grid.Column>
-                    </Grid.Row>
+                    <div className={styles.field}>
+                        <FieldWrapper
+                            as={Form.Input}
+                            errors={errors}
+                            type='password'
+                            name={AUTHENTICATION_FIELDS.PASSWORD}
+                            label={AUTHENTICATION_LABELS.PASSWORD}
+                        />
+                    </div>
 
-                    <Grid.Row>
-                        <Grid.Column className={styles.btLogin} width={6}>
-                            <ButtonUI type='submit' isLoading={requestState.isLoading}>
-                                Login
-                            </ButtonUI>
-                        </Grid.Column>
-                    </Grid.Row>
+                    <div className={styles.button}>
+                        <ButtonUI type='submit' width='50%' isLoading={requestState.isLoading}>
+                            Login
+                        </ButtonUI>
+                    </div>
 
-                    <Grid.Row>
-                        <Grid.Column width={7} className={styles.btRegister}>
-                            <Label key='medium' size='medium' onClick={() => setIsLogin(false)}>
-                                Ainda não possuí um cadastro?
-                                <strong>Clique aqui</strong>
-                            </Label>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                    <div className={styles.footer}>
+                        Não possuí uma conta?
+                        <strong className={styles.strong} onClick={() => {}}>
+                            Cadastre-se
+                        </strong>
+                    </div>
+                </div>
             </form>
         </FormProvider>
     );

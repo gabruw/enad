@@ -1,3 +1,42 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 100%;
+}
+
+.image {
+    width: 15vw;
+    height: 20vh;
+}
+
+.field {
+    width: 100%;
+}
+
+.footer {
+    margin-top: 40px;
+}
+
+.strong {
+    cursor: pointer;
+    color: #094c72;
+    margin-left: 5px;
+}
+
+.button {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .grid {
     justify-content: center;
     align-items: center;
