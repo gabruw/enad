@@ -33,10 +33,10 @@ export const CategoryContextProvider = ({ children, defaultValues }) => {
     }, [setState]);
 
     const setSelected = useCallback(
-        (category = {}) => {
+        (id = {}) => {
             setState((prevState) => ({
                 ...prevState,
-                selected: prevState[CATEGORY_FIELDS.THIS].find((ctg) => ctg.id === category.id)
+                selected: prevState[CATEGORY_FIELDS.THIS].find((ctg) => ctg.id === id)
             }));
         },
         [setState]

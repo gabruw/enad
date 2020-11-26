@@ -22,13 +22,15 @@ const ContextBox = ({ title, icon, children, onClick, research, buttonText, isLo
             <div className={styles.content}>
                 <div className={styles.buttonContent}>
                     <div className={styles.left}>
-                        <ButtonUI
-                            isLoading={isLoading}
-                            className={styles.button}
-                            onClick={async () => research && (await research())}
-                        >
-                            <Icon name='redo' className={styles.research} />
-                        </ButtonUI>
+                        {research && (
+                            <ButtonUI
+                                isLoading={isLoading}
+                                className={styles.button}
+                                onClick={async () => await research()}
+                            >
+                                <Icon name='redo' className={styles.research} />
+                            </ButtonUI>
+                        )}
                     </div>
 
                     <div className={styles.right}>

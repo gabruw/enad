@@ -1,5 +1,5 @@
 .content {
-    width: 240;
+    width: 100%;
     display: flex;
     flex-wrap: 'wrap';
     align-items: 'flex-start';
@@ -19,7 +19,7 @@
 
 .label {
     font-size: 14;
-    font-family: 'Geomanist-Medium';
+    font-family: Geomanist-Medium;
 }
 
 .error {

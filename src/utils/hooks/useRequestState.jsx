@@ -7,7 +7,7 @@ import sleep from 'utils/functions/sleep';
 
 const initalState = {
     data: null,
-    error: null,
+    errors: null,
     success: false,
     isLoading: false
 };
@@ -28,7 +28,7 @@ const useRequestState = () => {
             let responseObj = null;
             try {
                 const { data: result } = await callback();
-                responseObj = { ...initalState, data: result, success: true };
+                responseObj = { ...initalState, data: result.data, success: true };
             } catch (error) {
                 if (options && options.autoClear) {
                     clear(5000);
@@ -36,7 +36,7 @@ const useRequestState = () => {
 
                 responseObj = {
                     ...initalState,
-                    error: error.response && error.response.data ? error.response.data : error
+                    errors: error.response && error.response.data ? error.response.data : error
                 };
             }
 

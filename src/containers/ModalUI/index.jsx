@@ -3,6 +3,7 @@
 import ButtonUI from 'components/ButtonUI';
 import React, { forwardRef, Fragment, useCallback, useImperativeHandle, useState } from 'react';
 import { Header, Icon, Modal } from 'semantic-ui-react';
+import styles from './styles.module.css';
 
 //#endregion
 
@@ -34,16 +35,22 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, r
 
     return (
         <Modal closeIcon open={control} onOpen={() => whenOpen()} onClose={() => whenClose()}>
-            {title && <Header icon={icon} content={title} />}
+            {title && (
+                <Header
+                    icon={<Icon name={icon} className={styles.icon} />}
+                    content={<div className={styles.title}>{title}</div>}
+                />
+            )}
+
             <Modal.Content>{children}</Modal.Content>
             <Modal.Actions>
                 {actions || (
                     <Fragment>
-                        <ButtonUI color='red' onClick={() => handleClose()}>
+                        <ButtonUI color='light-red' onClick={() => handleClose()}>
                             <Icon name='remove' /> Fechar
                         </ButtonUI>
 
-                        <ButtonUI color='green' onClick={() => whenClick()}>
+                        <ButtonUI onClick={() => whenClick()}>
                             <Icon name='checkmark' /> Concluir
                         </ButtonUI>
                     </Fragment>

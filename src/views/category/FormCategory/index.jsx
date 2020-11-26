@@ -53,12 +53,6 @@ const FormCategory = () => {
                     />
                 </div>
 
-                <div className={styles.buttonContent}>
-                    <Button type='submit' primary>
-                        Salvar
-                    </Button>
-                </div>
-
                 <MessageBox list={requestState.error} error />
             </form>
         </FormProvider>
