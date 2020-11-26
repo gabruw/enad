@@ -5,7 +5,7 @@ import FieldWrapper from 'components/FieldWrapper';
 import MessageBox from 'components/MessageBox';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import useCategoryContext from 'storage/category/context';
 import CATEGORY_FIELDS from 'utils/constants/field/category';
 import CATEGORY_LABELS from 'utils/constants/label/category';

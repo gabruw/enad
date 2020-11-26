@@ -1,68 +1,104 @@
 //#region Imports
+
 import { yupResolver } from '@hookform/resolvers/yup';
-import 'assets/css/fonts.css';
-import 'assets/css/global.css';
 import Logo from 'assets/images/logo.png';
+import ButtonUI from 'components/ButtonUI';
 import FieldWrapper from 'components/FieldWrapper';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button, Form, Grid, Image, Label, Segment } from 'semantic-ui-react';
-import categorySchema from '../../category/FormCategory/schema';
-import './styles.modules.css';
+import { useHistory } from 'react-router-dom';
+import ROUTE_NAME from 'routes/route-name';
+import { Form, Grid, Image, Label } from 'semantic-ui-react';
+import useSystemContext from 'storage/system/context';
+import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
+import AUTHENTICATION_LABELS from 'utils/constants/label/authentication';
+import useRequestState from 'utils/hooks/useRequestState';
+import { login } from './../services/send-data';
+import loginSchema from './schema';
+import styles from './styles.module.css';
 
 //#endregion
 
 const Login = ({ setIsLogin }) => {
-console.log(setIsLogin)
-const methods = useForm({
-reValidateMode: 'onBlur',
-resolver: yupResolver(categorySchema)
-});
+    const history = useHistory();
+    const { addUser } = useSystemContext();
 
-const { handleSubmit, errors } = methods;
+    const methods = useForm({
+        reValidateMode: 'onBlur',
+        resolver: yupResolver(loginSchema)
+    });
+    const { handleSubmit, errors } = methods;
 
-const onSubmit = () => {};
+    const { run, requestState } = useRequestState();
+    const sendLogin = useCallback((data) => run(async () => await login(data)), [run]);
 
-return (
-<FormProvider {...methods}>
-    <form onSubmit={handleSubmit(onSubmit)}>
-            <div id='bloco'>
-        <Grid container className='grid'>
-                <Grid.Row className='logo'>
-                    <Grid.Column verticalAlign='middle'>
-                        <Image src={Logo} size='small' centered />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column  width={8}>
-                        <FieldWrapper as={Form.Input} errors={errors} label="E-mail" name="Email"
-                            placeholder='email@email.com' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column verticalAlign='middle' className='iptPassword'  width={8}>
-                        <FieldWrapper as={Form.Input} errors={errors} label="Senha" type='password' name="Senha"
-                            placeholder='Senha' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column className='btLogin' width={6}>
-                        <Button fluid content='Login' primary />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column width={7} className='btRegister'>
-                        <Label key='medium' size='medium' onClick={()=> setIsLogin(false)}>
-                            Deseja criar uma conta, <a href='#'>clique aqui</a>
-                        </Label>
-                    </Grid.Column>
-                </Grid.Row>
-        </Grid>
-        </div>
+    const onSubmit = useCallback(
+        async (data) => {
+            await sendLogin(data);
 
-    </form>
-</FormProvider>
-)
+            // if (requestState.success) {
+            // addUser(requestState.data);
+            //     history.push(ROUTE_NAME.IN.HOME);
+            // }
+        },
+        [sendLogin, requestState, addUser, history]
+    );
+
+    return (
+        <FormProvider {...methods}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className={styles.bloco}>
+                    <Grid container className={styles.grid}>
+                        <Grid.Row className={styles.logo}>
+                            <Grid.Column verticalAlign='middle'>
+                                <Image src={Logo} size='small' centered />
+                            </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <Grid.Column width={8}>
+                                <FieldWrapper
+                                    as={Form.Input}
+                                    errors={errors}
+                                    placeholder='email@email.com'
+                                    name={AUTHENTICATION_FIELDS.EMAIL}
+                                    label={AUTHENTICATION_LABELS.EMAIL}
+                                />
+                            </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <Grid.Column verticalAlign='middle' className={styles.iptPassword} width={8}>
+                                <FieldWrapper
+                                    as={Form.Input}
+                                    errors={errors}
+                                    type='password'
+                                    name={AUTHENTICATION_FIELDS.PASSWORD}
+                                    label={AUTHENTICATION_LABELS.PASSWORD}
+                                />
+                            </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <Grid.Column className={styles.btLogin} width={6}>
+                                <ButtonUI type='submit' isLoading={requestState.isLoading}>
+                                    Login
+                                </ButtonUI>
+                            </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <Grid.Column width={7} className={styles.btRegister}>
+                                <Label key='medium' size='medium' onClick={() => setIsLogin(false)}>
+                                    Deseja criar uma conta, <strong>clique aqui</strong>
+                                </Label>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </div>
+            </form>
+        </FormProvider>
+    );
 };
 
 export default Login;

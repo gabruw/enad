@@ -1,0 +1,36 @@
+.grid {
+    justify-content: center;
+    align-items: center;
+    margin-top: 22px !important;
+}
+
+.logo {
+    margin-top: 131px !important;
+}
+
+.iptEmail {
+    margin-top: 40px;
+    margin-bottom: 18px;
+}
+
+.iptPassword {
+    margin-bottom: 23px;
+}
+
+.btLogin {
+    margin-bottom: 35px;
+    margin-right: 34px;
+}
+
+.btRegister {
+    margin-right: 30px;
+}
+
+.bloco {
+    margin-left: 580px;
+    width: 500px;
+    height: 700px;
+    -webkit-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
+    -moz-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
+    box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
+}

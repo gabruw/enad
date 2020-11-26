@@ -18,8 +18,9 @@ export const SystemContextProvider = ({ children, defaultValues }) => {
 
     const addUser = useCallback(
         (user) => {
+            console.log('user', user);
             const encrypted = AES.encrypt(user, KEY.LOCAL_STORAGE);
-            localStorage.setItem([USER_FIELDS.THIS], JSON.stringify(encrypted));
+            localStorage.setItem([USER_FIELDS.THIS], user);
 
             setState((prevState) => ({
                 ...prevState,

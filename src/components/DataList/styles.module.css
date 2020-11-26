@@ -2,15 +2,3 @@
     font-size: 16px;
     font-family: Geomanist;
 }
-
-.withoutBorder {
-    border: none !important;
-}
-
-.icon {
-    color: #393e40 !important;
-}
-
-.icon:hover {
-    color: #616161 !important;
-}
