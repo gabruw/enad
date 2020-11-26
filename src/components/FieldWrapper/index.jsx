@@ -2,9 +2,8 @@
 
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
-import styles from './styles.module.css';
-
 import '../../assets/css/fonts.css';
+import styles from './styles.module.css';
 
 //#endregion
 
