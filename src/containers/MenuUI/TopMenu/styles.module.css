@@ -1,0 +1,27 @@
+.menu {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #393e40 !important;
+}
+
+.item {
+    padding: 0 !important;
+}
+
+.icon {
+    color: #ffffff !important;
+}
+
+.hamburguerButton {
+    width: 55px;
+    height: 55px;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.hoverItem:hover {
+    background: #616161 !important;
+}

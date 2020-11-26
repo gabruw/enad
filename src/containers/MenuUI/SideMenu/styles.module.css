@@ -1,0 +1,56 @@
+.sidebar {
+    margin: 0 !important;
+    border: 0 !important;
+    width: 230px !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #393e40 !important;
+}
+
+.pushable {
+    border: none !important;
+    margin-top: 0 !important;
+    border-radius: 0 !important;
+}
+
+.menu {
+    margin: 0 !important;
+    display: flex !important;
+    box-shadow: none !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+}
+
+.option {
+    display: 'flex';
+    align-items: ' center';
+    justify-content: 'center';
+}
+
+.icon {
+    font-size: 20px !important;
+}
+
+.text {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.pusher {
+    background: #f8f8f8 !important;
+}
+
+.content {
+    width: 98%;
+    margin: 20px;
+    display: flex;
+    height: 89.8vh;
+    align-items: flex-start;
+    justify-content: center;
+    transition: width 0.5s, margin 0.5s;
+}
+
+.intercept {
+    margin-left: 100px;
+    width: calc(100% - 270px) !important;
+}
