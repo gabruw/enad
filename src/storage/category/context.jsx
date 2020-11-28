@@ -4,15 +4,16 @@ import { createContext, useCallback, useContext, useRef, useState } from 'react'
 import CATEGORY_FIELDS from 'utils/constants/field/category';
 import useRequestState from 'utils/hooks/useRequestState';
 import { findAllCategories } from 'views/category/services/get-data';
+import CONTEXT_INITIAL_STATE from './../../utils/constants/context-initial-state';
+import PAGEABLE_FIELDS from './../../utils/constants/field/pageable';
 
 //#endregion
 
 const CategoryContext = createContext();
 
 const initialState = {
-    selected: {},
-    loading: false,
-    [CATEGORY_FIELDS.THIS]: null
+    [CATEGORY_FIELDS.THIS]: null,
+    ...CONTEXT_INITIAL_STATE
 };
 
 export const CategoryContextProvider = ({ children, defaultValues }) => {
@@ -20,7 +21,10 @@ export const CategoryContextProvider = ({ children, defaultValues }) => {
     const [state, setState] = useState({ ...initialState, ...defaultValues });
 
     const { run } = useRequestState();
-    const fetchCategories = useCallback(() => run(() => findAllCategories()), [run]);
+    const fetchCategories = useCallback(
+        (page, order, direction) => run(() => findAllCategories(page, order, direction)),
+        [run]
+    );
 
     const show = useCallback(() => modalRef.current && modalRef.current.show(), [modalRef]);
     const hide = useCallback(() => modalRef.current && modalRef.current.hide(), [modalRef]);
@@ -42,15 +46,25 @@ export const CategoryContextProvider = ({ children, defaultValues }) => {
         [setState]
     );
 
-    const researchCategories = useCallback(() => {
-        setLoading();
+    const researchCategories = useCallback(
+        (page, order, direction) => {
+            setLoading();
 
-        fetchCategories().then(({ data }) => {
-            setState((prevState) => ({ ...prevState, [CATEGORY_FIELDS.THIS]: data }));
-        });
+            fetchCategories(page, order, direction).then(({ data }) => {
+                setState((prevState) => ({
+                    ...prevState,
+                    [CATEGORY_FIELDS.THIS]: data.content,
+                    [PAGEABLE_FIELDS.THIS]: {
+                        ...data[PAGEABLE_FIELDS.THIS],
+                        [PAGEABLE_FIELDS.TOTAL_PAGES]: data[PAGEABLE_FIELDS.TOTAL_PAGES]
+                    }
+                }));
+            });
 
-        setLoading();
-    }, [setLoading, fetchCategories, setState]);
+            setLoading();
+        },
+        [setLoading, fetchCategories, setState]
+    );
 
     return (
         <CategoryContext.Provider value={{ setLoading, setSelected, researchCategories, show, hide, modalRef, state }}>

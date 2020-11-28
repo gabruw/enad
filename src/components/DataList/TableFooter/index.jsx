@@ -2,17 +2,19 @@
 
 import React from 'react';
 import { Icon, Menu, Pagination, Table } from 'semantic-ui-react';
+import PAGEABLE_FIELDS from 'utils/constants/field/pageable';
 
 //#endregion
 
-const TableFooter = () => (
+const TableFooter = ({ fetch, pageable }) => (
     <Table.Footer>
         <Table.Row>
             <Table.HeaderCell colSpan='3'>
                 <Menu floated='right'>
                     <Pagination
-                        totalPages={10}
                         defaultActivePage={1}
+                        totalPages={pageable[PAGEABLE_FIELDS.TOTAL_PAGES] - 1}
+                        onPageChange={(_, { activePage }) => fetch(activePage)}
                         prevItem={{ content: <Icon name='angle left' />, icon: true }}
                         nextItem={{ content: <Icon name='angle right' />, icon: true }}
                         lastItem={{ content: <Icon name='angle double right' />, icon: true }}

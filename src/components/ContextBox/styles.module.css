@@ -69,7 +69,7 @@
     color: '#FFFFFF';
 }
 
-.research:hover {
+.fetch:hover {
     transition: 1s ease;
     transform-origin: center;
     transform: rotate(360deg);

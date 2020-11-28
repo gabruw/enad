@@ -10,7 +10,7 @@ import TableHeader from './TableHeader';
 
 //#endregion
 
-const DataList = ({ headers, data, edit, remove, isLoading }) => {
+const DataList = ({ headers, data, edit, remove, isLoading, pageable, fetch }) => {
     const modalRef = useRef();
     const [selectedId, setSelectedId] = useState(null);
 
@@ -35,7 +35,7 @@ const DataList = ({ headers, data, edit, remove, isLoading }) => {
                     {...{ headers, data, edit, setSelectedId, isLoading }}
                 />
 
-                <TableFooter />
+                <TableFooter fetch={fetch} pageable={pageable} />
             </Table>
         </Fragment>
     );

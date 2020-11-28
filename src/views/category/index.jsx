@@ -18,18 +18,16 @@ const Category = () => (
 );
 
 const Provider = () => {
-    const { category, show, setSelected, loading, modalRef, researchCategories } = useCategoryContext();
+    const { category, show, pageable, setSelected, loading, modalRef, researchCategories } = useCategoryContext();
 
     useEffect(() => {
         researchCategories();
     }, [researchCategories]);
 
-    const edit = useCallback((id) => setSelected(id), [setSelected]);
-
     const remove = useCallback(
         async (id) => {
             await removeCategory(id);
-            await researchCategories();
+            researchCategories();
         },
         [researchCategories]
     );
@@ -46,9 +44,17 @@ const Provider = () => {
                 isLoading={loading}
                 onClick={() => show()}
                 buttonText='Adicionar Categoria'
-                research={() => researchCategories()}
+                fetch={() => researchCategories()}
             >
-                <DataList headers={DGH_CATEGORY} data={category} edit={edit} remove={remove} isLoading={loading} />
+                <DataList
+                    remove={remove}
+                    data={category}
+                    edit={setSelected}
+                    isLoading={loading}
+                    pageable={pageable}
+                    headers={DGH_CATEGORY}
+                    fetch={researchCategories}
+                />
             </ContextBox>
         </Fragment>
     );
