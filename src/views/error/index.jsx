@@ -5,7 +5,6 @@ import ButtonUI from 'components/ButtonUI';
 import React, { useCallback, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
-import { Image } from 'semantic-ui-react';
 import USER_FIELDS from 'utils/constants/field/user';
 import secureStorage from 'utils/functions/secureStorage';
 import styles from './styles.module.css';
@@ -30,7 +29,7 @@ const Error = () => {
         <div className={styles.content}>
             <div className={styles.image}>
                 <div className={styles.code}>401</div>
-                <img src={ErrorGif} />
+                <img src={ErrorGif} alt='Error' />
             </div>
 
             <div className={styles.textContext}>
