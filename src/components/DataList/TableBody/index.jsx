@@ -12,7 +12,7 @@ const TableBody = ({ headers, data, edit, isLoading, setSelectedId, show }) => {
             setSelectedId(id);
             show();
         },
-        [setSelectedId]
+        [show, setSelectedId]
     );
 
     return (

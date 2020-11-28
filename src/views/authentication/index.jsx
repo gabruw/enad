@@ -22,7 +22,7 @@ const Authentication = () => {
     const { user, addUser, removeUser } = useSystemContext();
 
     const { run, requestState } = useRequestState();
-    const fetchToken = useCallback(() => run(async () => await refresh()), [run]);
+    const fetchToken = useCallback(() => run(() => refresh()), [run]);
 
     useEffect(() => {
         if (canRefresh) {
@@ -33,7 +33,10 @@ const Authentication = () => {
                         addUser({ ...user, [AUTHENTICATION_FIELDS.TOKEN]: data[AUTHENTICATION_FIELDS.TOKEN] });
                         history.push(ROUTE_NAME.IN.HOME);
                     })
-                    .catch(() => removeUser());
+                    .catch(() => {
+                        removeUser();
+                        history.push(ROUTE_NAME.OUT.HOME);
+                    });
             }
         }
     }, [canRefresh, fetchToken, addUser, user, history, removeUser]);

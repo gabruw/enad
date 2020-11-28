@@ -44,9 +44,9 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
     );
 
     return (
-        <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.content}>
+        <div className={styles.content}>
+            <FormProvider {...methods}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.logo}>
                         <Image src={Logo} className={styles.image} centered />
                     </div>
@@ -72,7 +72,13 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
                     </div>
 
                     <div className={styles.button}>
-                        <ButtonUI type='submit' width='50%' isLoading={requestState.isLoading}>
+                        <ButtonUI
+                            type='submit'
+                            width='100%'
+                            height='40px'
+                            fontSize='16px'
+                            isLoading={requestState.isLoading}
+                        >
                             Login
                         </ButtonUI>
                     </div>
@@ -83,9 +89,9 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
                             Cadastre-se
                         </strong>
                     </div>
-                </div>
-            </form>
-        </FormProvider>
+                </form>
+            </FormProvider>
+        </div>
     );
 };
 

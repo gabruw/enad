@@ -5,8 +5,8 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { SystemContextProvider } from 'storage/system/context';
 import USER_FIELDS from 'utils/constants/field/user';
+import secureStorage from 'utils/functions/secureStorage';
 import AppRoutes from './AppRoutes';
-import secureStorage from './utils/functions/secureStorage';
 
 //#endregion
 

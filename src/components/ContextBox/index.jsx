@@ -23,7 +23,7 @@ const ContextBox = ({ title, icon, children, onClick, fetch, buttonText, isLoadi
                 <div className={styles.left}>
                     {fetch && (
                         <ButtonUI isLoading={isLoading} className={styles.button} onClick={async () => await fetch()}>
-                            <Icon name='redo' className={styles.fetch} />
+                            <Icon name='redo' />
                         </ButtonUI>
                     )}
                 </div>

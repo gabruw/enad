@@ -9,9 +9,45 @@
 }
 
 .segment {
-    width: 30vw;
+    width: 30%;
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 1350px) {
+    .segment {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .segment {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .segment {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .segment {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .segment {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .segment {
+        width: 95%;
+    }
 }

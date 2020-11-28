@@ -65,12 +65,12 @@
     margin-bottom: 30;
 }
 
-.icon {
-    color: '#FFFFFF';
-}
-
-.fetch:hover {
+.button:hover > div > span > i {
     transition: 1s ease;
     transform-origin: center;
     transform: rotate(360deg);
+}
+
+.icon {
+    color: '#FFFFFF';
 }

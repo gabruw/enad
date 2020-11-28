@@ -1,13 +1,23 @@
 html {
-    min-height: 100vh;
-    position: relative;
-    scroll-behavior: smooth;
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: relative !important;
+    line-height: normal !important;
+    background: #f8f8f8 !important;
+    box-sizing: border-box !important;
     font-family: Geomanist !important;
+    scroll-behavior: smooth !important;
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
-    background: #f8f8f8;
-    box-sizing: border-box;
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    line-height: normal !important;
+    background: #f8f8f8 !important;
+    box-sizing: border-box !important;
+    font-family: Geomanist !important;
 }

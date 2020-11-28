@@ -1,0 +1,50 @@
+.content {
+    display: flex;
+    height: 100vh;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.image {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.code {
+    z-index: 99;
+    color: #ffffff;
+    font-size: 100px;
+    position: absolute;
+    margin-left: 315px;
+    margin-top: 135px;
+}
+
+.textContext {
+    width: 68%;
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title {
+    width: 100%;
+    font-size: 120px;
+    color: #2e3732;
+    font-family: Geomanist-Medium;
+}
+
+.description {
+    width: 100%;
+    font-size: 70px;
+    color: #c8c8c8;
+}
+
+.button {
+    width: 100%;
+    margin-top: 20px;
+}
