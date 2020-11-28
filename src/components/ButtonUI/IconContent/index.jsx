@@ -2,13 +2,18 @@
 
 import React, { Fragment } from 'react';
 import { Icon } from 'semantic-ui-react';
-import styles from '../styles.module.css';
 
 //#endregion
 
 const IconContent = ({ name, fontSize, ...rest }) => (
     <Fragment>
-        {name && <Icon name={name} style={{ fontSize: fontSize }} className={styles.content} {...rest} />}
+        {name && (
+            <Icon
+                name={name}
+                style={{ fontSize: fontSize, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                {...rest}
+            />
+        )}
     </Fragment>
 );
 

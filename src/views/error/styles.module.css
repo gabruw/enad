@@ -1,7 +1,9 @@
 .content {
     display: flex;
     height: 100vh;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -15,11 +17,11 @@
 
 .code {
     z-index: 99;
-    color: #ffffff;
-    font-size: 100px;
+    font-size: 95px;
+    color: #393e40;
+    margin-top: 255px;
+    margin-left: 200px;
     position: absolute;
-    margin-left: 315px;
-    margin-top: 135px;
 }
 
 .textContext {
@@ -47,4 +49,33 @@
 .button {
     width: 100%;
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 1805px) {
+    .image {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .code {
+        margin-top: 145px;
+        margin-left: 0px;
+    }
+
+    .textContext {
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .description {
+        text-align: center;
+    }
+
+    .button {
+        text-align: center;
+    }
 }
