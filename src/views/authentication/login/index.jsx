@@ -85,7 +85,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
 
                     <div className={styles.footer}>
                         Não possuí uma conta?
-                        <strong className={styles.strong} onClick={() => {}}>
+                        <strong className={styles.strong} onClick={() => setIsLogin(false)}>
                             Cadastre-se
                         </strong>
                     </div>

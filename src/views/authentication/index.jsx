@@ -13,12 +13,14 @@ import useRequestState from 'utils/hooks/useRequestState';
 import Login from './login';
 import { refresh } from './services/get-data';
 import styles from './styles.module.css';
+import Registration from './registration/index';
 
 //#endregion
 
 const Authentication = () => {
     const history = useHistory();
     const [canRefresh, setCanRefresh] = useState(true);
+    const [isLogin, setIsLogin] = useState(true);
     const { user, addUser, removeUser } = useSystemContext();
 
     const { run, requestState } = useRequestState();
@@ -46,7 +48,11 @@ const Authentication = () => {
             <ScreenLoader isLoading={requestState.isLoading} />
 
             <Segment className={styles.segment}>
-                <Login setCanRefresh={setCanRefresh} />
+                {isLogin ? (
+                    <Login setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
+                ) : (
+                    <Registration setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
+                )}
             </Segment>
         </div>
     );

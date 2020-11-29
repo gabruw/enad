@@ -1,0 +1,36 @@
+.logo {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.image {
+    width: 15vw;
+    height: 20vh;
+}
+
+.field {
+    width: 100%;
+    padding: 8px 0px;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    margin-top: 40px;
+}
+
+.strong {
+    cursor: pointer;
+    color: #026aa7;
+    margin-left: 5px;
+}
+
+.strong:hover {
+    color: #0079bf;
+}
