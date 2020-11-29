@@ -13,8 +13,8 @@ const TableFooter = ({ fetch, pageable }) => (
                 <Menu floated='right'>
                     <Pagination
                         defaultActivePage={1}
-                        totalPages={pageable[PAGEABLE_FIELDS.TOTAL_PAGES] - 1}
-                        onPageChange={(_, { activePage }) => fetch(activePage)}
+                        totalPages={pageable[PAGEABLE_FIELDS.TOTAL_PAGES]}
+                        onPageChange={(_, { activePage }) => fetch(activePage - 1)}
                         prevItem={{ content: <Icon name='angle left' />, icon: true }}
                         nextItem={{ content: <Icon name='angle right' />, icon: true }}
                         lastItem={{ content: <Icon name='angle double right' />, icon: true }}

@@ -2,7 +2,6 @@
 
 import ContextBox from 'components/ContextBox';
 import DataList from 'components/DataList';
-import ModalUI from 'containers/ModalUI';
 import React, { Fragment, useCallback, useEffect } from 'react';
 import useCategoryContext, { CategoryContextProvider } from 'storage/category/context';
 import FormCategory from './FormCategory';
@@ -18,7 +17,7 @@ const Category = () => (
 );
 
 const Provider = () => {
-    const { category, show, pageable, setSelected, loading, modalRef, researchCategories } = useCategoryContext();
+    const { category, show, pageable, setSelected, loading, researchCategories } = useCategoryContext();
 
     useEffect(() => {
         researchCategories();
@@ -32,19 +31,9 @@ const Provider = () => {
         [setSelected, show]
     );
 
-    const remove = useCallback(
-        async (id) => {
-            await removeCategory(id);
-            researchCategories();
-        },
-        [researchCategories]
-    );
-
     return (
         <Fragment>
-            <ModalUI ref={modalRef} title='Adicionar Categoria' icon='plus' onClose={() => setSelected()}>
-                <FormCategory />
-            </ModalUI>
+            <FormCategory />
 
             <ContextBox
                 icon='list'
@@ -56,11 +45,11 @@ const Provider = () => {
             >
                 <DataList
                     edit={edit}
-                    remove={remove}
                     data={category}
                     isLoading={loading}
                     pageable={pageable}
                     headers={DGH_CATEGORY}
+                    remove={removeCategory}
                     fetch={researchCategories}
                 />
             </ContextBox>

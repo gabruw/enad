@@ -1,7 +1,7 @@
 //#region Imports
 
 import ModalUI from 'containers/ModalUI';
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useCallback, useRef, useState } from 'react';
 import { Table } from 'semantic-ui-react';
 import styles from './styles.module.css';
 import TableBody from './TableBody';
@@ -14,14 +14,14 @@ const DataList = ({ headers, data, edit, remove, isLoading, pageable, fetch }) =
     const modalRef = useRef();
     const [selectedId, setSelectedId] = useState(null);
 
+    const handleRemove = useCallback(async () => {
+        await remove(selectedId);
+        fetch();
+    }, [remove, selectedId, fetch]);
+
     return (
         <Fragment>
-            <ModalUI
-                icon='trash'
-                ref={modalRef}
-                title='Deseja mesmo continuar?'
-                onClick={async () => await remove(selectedId)}
-            >
+            <ModalUI icon='trash' ref={modalRef} title='Deseja mesmo continuar?' onConfirm={() => handleRemove()}>
                 <div className={styles.modalText}>
                     Ao confirmar a solicitação, este item será excluído. Deseja continuar?
                 </div>

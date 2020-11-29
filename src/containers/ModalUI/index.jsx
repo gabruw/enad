@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 
 //#endregion
 
-const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, ref) => {
+const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onConfirm }, ref) => {
     const [control, setControl] = useState(false);
 
     const handleOpen = useCallback(() => setControl(true), [setControl]);
@@ -19,9 +19,9 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, r
     }));
 
     const whenClick = useCallback(() => {
-        onClick && onClick();
+        onConfirm && onConfirm();
         handleClose();
-    }, [onClick, handleClose]);
+    }, [onConfirm, handleClose]);
 
     const whenOpen = useCallback(() => {
         onOpen && onOpen();
