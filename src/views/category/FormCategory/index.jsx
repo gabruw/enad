@@ -17,7 +17,7 @@ import categorySchema from './schema';
 
 const FormCategory = () => {
     const { run, requestState } = useRequestState();
-    const { selected, hasSelected, modalRef, setSelected, researchCategories } = useCategoryContext();
+    const { selected, hasSelected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
 
     const methods = useForm({
         defaultValues: selected,
@@ -36,8 +36,9 @@ const FormCategory = () => {
             }
 
             researchCategories();
+            hide();
         },
-        [run, selected, researchCategories]
+        [run, selected, researchCategories, hide]
     );
 
     return (

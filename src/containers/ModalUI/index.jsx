@@ -18,11 +18,6 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onConfirm },
         hide: () => handleClose()
     }));
 
-    const whenClick = useCallback(() => {
-        onConfirm && onConfirm();
-        handleClose();
-    }, [onConfirm, handleClose]);
-
     const whenOpen = useCallback(() => {
         onOpen && onOpen();
         handleOpen();
@@ -50,7 +45,7 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onConfirm },
                             <Icon name='remove' /> Fechar
                         </ButtonUI>
 
-                        <ButtonUI onClick={() => whenClick()}>
+                        <ButtonUI onClick={() => onConfirm && onConfirm()}>
                             <Icon name='checkmark' /> Concluir
                         </ButtonUI>
                     </Fragment>

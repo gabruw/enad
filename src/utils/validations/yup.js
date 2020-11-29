@@ -30,38 +30,38 @@ export const emptyStringToUndefined = (value, originalValue) => {
  */
 yup.setLocale({
     mixed: {
-        default: '${path} é inválido',
-        required: '${path} é um campo obrigatório',
-        oneOf: '${path} deve ser um dos seguintes valores: ${values}',
-        notOneOf: '${path} não pode ser um dos seguintes valores: ${values}'
+        default: ({ label }) => `'${label}' é inválido`,
+        required: ({ label }) => `'${label}' é um campo obrigatório`,
+        oneOf: ({ label, values }) => `'${label}' deve ser um dos seguintes valores: ${values}`,
+        notOneOf: ({ label, values }) => `'${label}' não pode ser um dos seguintes valores: ${values}`
     },
     string: {
-        lowercase: '${path} deve estar em maiúsculo',
-        uppercase: '${path} deve estar em minúsculo',
-        url: '${path} deve ter um formato de URL válida',
-        email: '${path} tem o formato de e-mail inválido',
-        max: '${path} deve ter no máximo ${max} caracteres',
-        min: '${path} deve ter pelo menos ${min} caracteres',
-        length: '${path} deve ter exatamente ${length} caracteres',
-        trim: '${path} não deve conter espaços no início ou no fim.'
+        lowercase: ({ label }) => `'${label}' deve estar em maiúsculo`,
+        uppercase: ({ label }) => `'${label}' deve estar em minúsculo`,
+        url: ({ label }) => `'${label}' deve ter um formato de URL válida`,
+        email: ({ label }) => `'${label}' tem o formato de e-mail inválido`,
+        max: ({ label, max }) => `'${label}' deve ter no máximo ${max} caracteres`,
+        min: ({ label, min }) => `'${label}' deve ter pelo menos ${min} caracteres`,
+        trim: ({ label }) => `'${label}' não deve conter espaços no início ou no fim`,
+        length: ({ label, length }) => `'${label}' deve ter exatamente ${length} caracteres`
     },
     number: {
-        min: '${path} deve ser no mínimo ${min}',
-        max: '${path} deve ser no máximo ${max}',
-        integer: '${path} deve ser um número inteiro',
-        lessThan: '${path} deve ser menor que ${less}',
-        moreThan: '${path} deve ser maior que ${more}',
-        positive: '${path} deve ser um número positivo',
-        negative: '${path} deve ser um número negativo',
-        notEqual: '${path} não pode ser igual à ${notEqual}'
+        min: ({ label, min }) => `'${label}' deve ser no mínimo ${min}`,
+        max: ({ label, max }) => `'${label}' deve ser no máximo ${max}`,
+        integer: ({ label }) => `'${label}' deve ser um número inteiro`,
+        positive: ({ label }) => `'${label}' deve ser um número positivo`,
+        negative: ({ label }) => `'${label}' deve ser um número negativo`,
+        lessThan: ({ label, less }) => `'${label}' deve ser menor que ${less}`,
+        moreThan: ({ label, more }) => `'${label}' deve ser maior que ${more}`,
+        notEqual: ({ label, notEqual }) => `'${label}' não pode ser igual à ${notEqual}`
     },
     date: {
-        min: '${path} deve ser maior que a data ${min}',
-        max: '${path} deve ser menor que a data ${max}'
+        min: ({ label, min }) => `'${label}' deve ser maior que a data ${min}`,
+        max: ({ label, max }) => `'${label}' deve ser menor que a data ${max}`
     },
     array: {
-        min: '${path} deve ter no mínimo ${min} itens',
-        max: '${path} deve ter no máximo ${max} itens'
+        min: ({ label, min }) => `'${label}' deve ter no mínimo ${min} itens`,
+        max: ({ label, max }) => `'${label}' deve ter no máximo ${max} itens`
     }
 });
 
