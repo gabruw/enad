@@ -5,9 +5,9 @@ import MessageBox from 'components/MessageBox';
 import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { Form } from 'semantic-ui-react';
 import useCategoryContext from 'storage/category/context';
 import editMerge from 'utils/functions/editMerge';
-import isPresent from 'utils/functions/isPresent';
 import useRequestState from 'utils/hooks/useRequestState';
 import { editCategory, includeCategory } from '../services/send-data';
 import FieldsCategory from './../FieldsCategory';
@@ -17,8 +17,9 @@ import categorySchema from './schema';
 
 const FormCategory = () => {
     const { run, requestState } = useRequestState();
-    const { selected, hasSelected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
+    const { hasSelected, selected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
 
+    console.log('selected', selected);
     const methods = useForm({
         defaultValues: selected,
         reValidateMode: 'onBlur',
@@ -28,7 +29,7 @@ const FormCategory = () => {
 
     const onSubmit = useCallback(
         async (data) => {
-            if (isPresent(selected)) {
+            if (hasSelected) {
                 data = editMerge(data, selected);
                 await run(() => editCategory(data));
             } else {
@@ -38,7 +39,7 @@ const FormCategory = () => {
             researchCategories();
             hide();
         },
-        [run, selected, researchCategories, hide]
+        [hasSelected, selected, run, researchCategories, hide]
     );
 
     return (
@@ -50,11 +51,11 @@ const FormCategory = () => {
             onConfirm={handleSubmit(onSubmit)}
         >
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <FieldsCategory errors={errors} />
 
                     <MessageBox list={requestState.error} error />
-                </form>
+                </Form>
             </FormProvider>
         </ModalCrudUI>
     );

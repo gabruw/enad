@@ -24,7 +24,7 @@ const Provider = () => {
     }, [researchCategories]);
 
     const edit = useCallback(
-        async (id) => {
+        (id) => {
             setSelected(id);
             show();
         },

@@ -12,7 +12,6 @@ const TableFooter = ({ fetch, pageable }) => (
             <Table.HeaderCell colSpan='3'>
                 <Menu floated='right'>
                     <Pagination
-                        defaultActivePage={1}
                         totalPages={pageable[PAGEABLE_FIELDS.TOTAL_PAGES]}
                         activePage={pageable[PAGEABLE_FIELDS.PAGE_NUMBER] + 1}
                         onPageChange={(_, { activePage }) => fetch(activePage - 1)}

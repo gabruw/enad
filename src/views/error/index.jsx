@@ -15,7 +15,7 @@ const Error = () => {
     const history = useHistory();
 
     const user = useMemo(() => secureStorage.getItem([USER_FIELDS.THIS]), []);
-    const buttonText = useMemo(() => (user ? 'Voltar' : 'Ir para a tela de Login'), [user]);
+    const buttonText = useMemo(() => (user ? 'Voltar' : 'Ir para a tela de login'), [user]);
 
     const handleClick = useCallback(() => {
         if (user) {
@@ -38,11 +38,11 @@ const Error = () => {
 
                 <div className={styles.button}>
                     <ButtonUI
-                        width='200px'
                         height='50px'
                         fontSize='20px'
                         startIcon='arrow left'
                         onClick={() => handleClick()}
+                        width={user ? '200px' : '300px'}
                     >
                         {buttonText}
                     </ButtonUI>

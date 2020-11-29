@@ -1,3 +1,5 @@
-const AUTHENTICATION_PLACEHOLDERS = {};
+const AUTHENTICATION_PLACEHOLDERS = {
+    EMAIL: 'email@email.com'
+};
 
 export default AUTHENTICATION_PLACEHOLDERS;

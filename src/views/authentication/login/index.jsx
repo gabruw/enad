@@ -46,7 +46,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
     return (
         <div className={styles.content}>
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.logo}>
                         <Image src={Logo} className={styles.image} centered />
                     </div>
@@ -89,7 +89,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
                             Cadastre-se
                         </strong>
                     </div>
-                </form>
+                </Form>
             </FormProvider>
         </div>
     );
