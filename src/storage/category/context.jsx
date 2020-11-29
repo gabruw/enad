@@ -1,11 +1,11 @@
 //#region Imports
 
 import { createContext, useCallback, useContext, useRef, useState } from 'react';
+import CONTEXT_INITIAL_STATE from 'utils/constants/context-initial-state';
 import CATEGORY_FIELDS from 'utils/constants/field/category';
+import PAGEABLE_FIELDS from 'utils/constants/field/pageable';
 import useRequestState from 'utils/hooks/useRequestState';
 import { findAllCategories } from 'views/category/services/get-data';
-import CONTEXT_INITIAL_STATE from './../../utils/constants/context-initial-state';
-import PAGEABLE_FIELDS from './../../utils/constants/field/pageable';
 
 //#endregion
 
