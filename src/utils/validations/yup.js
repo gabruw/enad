@@ -30,16 +30,38 @@ export const emptyStringToUndefined = (value, originalValue) => {
  */
 yup.setLocale({
     mixed: {
-        required: 'O campo é obrigatório'
+        default: '${path} é inválido',
+        required: '${path} é um campo obrigatório',
+        oneOf: '${path} deve ser um dos seguintes valores: ${values}',
+        notOneOf: '${path} não pode ser um dos seguintes valores: ${values}'
     },
     string: {
-        min: 'O campo deve ter no mínimo ${min} caracteres',
-        max: 'O campo deve ter no máximo ${max} caracteres',
-        email: 'O e-mail é inválido'
+        lowercase: '${path} deve estar em maiúsculo',
+        uppercase: '${path} deve estar em minúsculo',
+        url: '${path} deve ter um formato de URL válida',
+        email: '${path} tem o formato de e-mail inválido',
+        max: '${path} deve ter no máximo ${max} caracteres',
+        min: '${path} deve ter pelo menos ${min} caracteres',
+        length: '${path} deve ter exatamente ${length} caracteres',
+        trim: '${path} não deve conter espaços no início ou no fim.'
     },
     number: {
-        min: 'O campo deve ter o valor maior que ${min}',
-        max: 'O campo deve ter o valor menor que ${max}'
+        min: '${path} deve ser no mínimo ${min}',
+        max: '${path} deve ser no máximo ${max}',
+        integer: '${path} deve ser um número inteiro',
+        lessThan: '${path} deve ser menor que ${less}',
+        moreThan: '${path} deve ser maior que ${more}',
+        positive: '${path} deve ser um número positivo',
+        negative: '${path} deve ser um número negativo',
+        notEqual: '${path} não pode ser igual à ${notEqual}'
+    },
+    date: {
+        min: '${path} deve ser maior que a data ${min}',
+        max: '${path} deve ser menor que a data ${max}'
+    },
+    array: {
+        min: '${path} deve ter no mínimo ${min} itens',
+        max: '${path} deve ter no máximo ${max} itens'
     }
 });
 

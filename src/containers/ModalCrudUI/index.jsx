@@ -9,7 +9,7 @@ const ModalCrudUI = ({ isAdd = true, isEdit, isRemove, title, children, ...rest 
     const _title = useMemo(
         () =>
             (isRemove && 'Deseja mesmo continuar?') || (isEdit && `Editar ${title}`) || (isAdd && `Adicionar ${title}`),
-        [isRemove, isEdit, isAdd]
+        [isRemove, isEdit, isAdd, title]
     );
 
     const icon = useMemo(() => (isRemove && 'trash') || (isEdit && 'edit') || (isAdd && 'plus'), [

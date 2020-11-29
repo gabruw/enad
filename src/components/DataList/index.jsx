@@ -1,13 +1,12 @@
 //#region Imports
 
-import ModalUI from 'containers/ModalUI';
+import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { Fragment, useCallback, useRef, useState } from 'react';
 import { Table } from 'semantic-ui-react';
 import styles from './styles.module.css';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TableHeader from './TableHeader';
-import ModalCrudUI from 'containers/ModalCrudUI';
 
 //#endregion
 
