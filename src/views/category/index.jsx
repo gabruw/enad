@@ -24,6 +24,14 @@ const Provider = () => {
         researchCategories();
     }, [researchCategories]);
 
+    const edit = useCallback(
+        async (id) => {
+            setSelected(id);
+            show();
+        },
+        [setSelected, show]
+    );
+
     const remove = useCallback(
         async (id) => {
             await removeCategory(id);
@@ -34,7 +42,7 @@ const Provider = () => {
 
     return (
         <Fragment>
-            <ModalUI ref={modalRef} title='Adicionar Categoria' icon='plus'>
+            <ModalUI ref={modalRef} title='Adicionar Categoria' icon='plus' onClose={() => setSelected()}>
                 <FormCategory />
             </ModalUI>
 
@@ -47,9 +55,9 @@ const Provider = () => {
                 fetch={() => researchCategories()}
             >
                 <DataList
+                    edit={edit}
                     remove={remove}
                     data={category}
-                    edit={setSelected}
                     isLoading={loading}
                     pageable={pageable}
                     headers={DGH_CATEGORY}

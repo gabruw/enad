@@ -46,7 +46,7 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, r
             <Modal.Actions>
                 {actions || (
                     <Fragment>
-                        <ButtonUI color='light-red' onClick={() => handleClose()}>
+                        <ButtonUI color='light-red' onClick={() => whenClose()}>
                             <Icon name='remove' /> Fechar
                         </ButtonUI>
 
