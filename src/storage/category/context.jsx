@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useRef, useState } from 'react'
 import CONTEXT_INITIAL_STATE from 'utils/constants/context-initial-state';
 import CATEGORY_FIELDS from 'utils/constants/field/category';
 import PAGEABLE_FIELDS from 'utils/constants/field/pageable';
+import isPresent from 'utils/functions/isPresent';
 import useRequestState from 'utils/hooks/useRequestState';
 import { findAllCategories } from 'views/category/services/get-data';
 
@@ -37,12 +38,16 @@ export const CategoryContextProvider = ({ children, defaultValues }) => {
     }, [setState]);
 
     const setSelected = useCallback(
-        (id) => {
-            setState((prevState) => ({
-                ...prevState,
-                selected: prevState[CATEGORY_FIELDS.THIS].find((ctg) => ctg.id === id) || {}
-            }));
-        },
+        (id) =>
+            setState((prevState) => {
+                const selected = prevState[CATEGORY_FIELDS.THIS].find((ctg) => ctg.id === id) || {};
+
+                return {
+                    ...prevState,
+                    selected,
+                    hasSelected: isPresent(selected)
+                };
+            }),
         [setState]
     );
 

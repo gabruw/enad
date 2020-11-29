@@ -2,7 +2,7 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import MessageBox from 'components/MessageBox';
-import ModalUI from 'containers/ModalUI';
+import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import useCategoryContext from 'storage/category/context';
@@ -17,8 +17,8 @@ import categorySchema from './schema';
 
 const FormCategory = () => {
     const { run, requestState } = useRequestState();
-    const { selected, modalRef, setSelected, researchCategories } = useCategoryContext();
-    console.log('selected', selected);
+    const { selected, hasSelected, modalRef, setSelected, researchCategories } = useCategoryContext();
+
     const methods = useForm({
         defaultValues: selected,
         reValidateMode: 'onBlur',
@@ -41,10 +41,10 @@ const FormCategory = () => {
     );
 
     return (
-        <ModalUI
-            icon='plus'
+        <ModalCrudUI
             ref={modalRef}
-            title='Adicionar Categoria'
+            title='Categoria'
+            isEdit={hasSelected}
             onClose={() => setSelected()}
             onConfirm={handleSubmit(onSubmit)}
         >
@@ -55,7 +55,7 @@ const FormCategory = () => {
                     <MessageBox list={requestState.error} error />
                 </form>
             </FormProvider>
-        </ModalUI>
+        </ModalCrudUI>
     );
 };
 

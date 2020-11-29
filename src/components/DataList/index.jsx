@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TableHeader from './TableHeader';
+import ModalCrudUI from 'containers/ModalCrudUI';
 
 //#endregion
 
@@ -21,11 +22,11 @@ const DataList = ({ headers, data, edit, remove, isLoading, pageable, fetch }) =
 
     return (
         <Fragment>
-            <ModalUI icon='trash' ref={modalRef} title='Deseja mesmo continuar?' onConfirm={() => handleRemove()}>
+            <ModalCrudUI ref={modalRef} onConfirm={() => handleRemove()} isRemove>
                 <div className={styles.modalText}>
                     Ao confirmar a solicitação, este item será excluído. Deseja continuar?
                 </div>
-            </ModalUI>
+            </ModalCrudUI>
 
             <Table celled>
                 <TableHeader headers={headers} />
