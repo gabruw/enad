@@ -21,7 +21,6 @@ const FieldsRegistration = ({ setValue, errors }) => (
                 as={Form.Input}
                 errors={errors}
                 name={USER_FIELDS.NAME}
-                className={styles.field}
                 label={USER_LABELS.NAME}
                 placeholder={USER_PLACEHOLDERS.NAME}
             />
@@ -34,7 +33,6 @@ const FieldsRegistration = ({ setValue, errors }) => (
                     errors={errors}
                     name={USER_FIELDS.CPF}
                     label={USER_LABELS.CPF}
-                    className={styles.field}
                     placeholder={USER_PLACEHOLDERS.CPF}
                 />
             </div>
@@ -45,7 +43,6 @@ const FieldsRegistration = ({ setValue, errors }) => (
                     errors={errors}
                     setValue={setValue}
                     name={USER_FIELDS.BIRTH}
-                    className={styles.field}
                     label={USER_LABELS.BIRTH}
                 />
             </div>
@@ -55,7 +52,6 @@ const FieldsRegistration = ({ setValue, errors }) => (
             <FieldWrapper
                 as={Form.Input}
                 errors={errors}
-                className={styles.field}
                 name={AUTHENTICATION_FIELDS.EMAIL}
                 label={AUTHENTICATION_LABELS.EMAIL}
                 placeholder={AUTHENTICATION_PLACEHOLDERS.EMAIL}
@@ -64,6 +60,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
 
         <div className={styles.field}>
             <FieldWrapper
+                type='password'
                 as={Form.Input}
                 errors={errors}
                 className={styles.field}

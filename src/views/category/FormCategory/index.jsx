@@ -20,6 +20,7 @@ const FormCategory = () => {
     const { hasSelected, selected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
 
     console.log('selected', selected);
+
     const methods = useForm({
         defaultValues: selected,
         reValidateMode: 'onBlur',

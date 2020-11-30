@@ -12,7 +12,7 @@ import { Form } from 'semantic-ui-react';
 import useSystemContext from 'storage/system/context';
 import IMAGE_TYPES from 'utils/constants/types/image-types';
 import useRequestState from 'utils/hooks/useRequestState';
-import formatRegister from '../services/format-data';
+import { formatLogin, formatRegister } from '../services/format-data';
 import { login } from '../services/get-data';
 import { includeUser } from '../services/send-data';
 import FieldsRegistration from './FieldsRegistration';
@@ -33,8 +33,8 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
     const { handleSubmit, setValue, errors } = methods;
 
     const { run, requestState } = useRequestState();
-    const fecthLogin = useCallback((data) => run(async () => await login(data)), [run]);
-    const submitUser = useCallback((data) => run(async () => await includeUser(data)), [run]);
+    const fecthLogin = useCallback((data) => run(() => login(data)), [run]);
+    const submitUser = useCallback((data) => run(() => includeUser(data)), [run]);
 
     const onSubmit = useCallback(
         async (data) => {
@@ -43,6 +43,7 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
             await submitUser(data).then(async () => {
                 setCanRefresh(false);
 
+                data = formatLogin(data);
                 await fecthLogin(data).then((response) => {
                     addUser(response.data);
                     history.push(ROUTE_NAME.IN.HOME);

@@ -17,11 +17,7 @@ const registrationSchema = yup.object().shape({
         .required()
         .transform(emptyStringToUndefined)
         .max(255)
-        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => {
-            console.log('value', value);
-            console.log('moment', moment().diff(value, 'years'));
-            return moment().diff(value, 'years') < 18;
-        })
+        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => moment().diff(value, 'years') > 18)
         .label(USER_LABELS.BIRTH),
     [AUTHENTICATION_FIELDS.PASSWORD]: yup.string().required().max(255).label(AUTHENTICATION_LABELS.PASSWORD),
     [AUTHENTICATION_FIELDS.EMAIL]: yup.string().email().required().max(255).label(AUTHENTICATION_LABELS.EMAIL)

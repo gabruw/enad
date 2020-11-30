@@ -28,7 +28,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
     const { handleSubmit, errors } = methods;
 
     const { run, requestState } = useRequestState();
-    const fecthLogin = useCallback((data) => run(async () => await login(data)), [run]);
+    const fecthLogin = useCallback((data) => run(() => login(data)), [run]);
 
     const onSubmit = useCallback(
         async (data) => {
