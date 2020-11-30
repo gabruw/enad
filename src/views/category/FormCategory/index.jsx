@@ -55,7 +55,7 @@ const FormCategory = () => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FieldsCategory errors={errors} />
 
-                    <MessageBox list={requestState.error} error />
+                    <MessageBox list={requestState.errors} error />
                 </Form>
             </FormProvider>
         </ModalCrudUI>

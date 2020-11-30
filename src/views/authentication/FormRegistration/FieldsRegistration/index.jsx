@@ -31,6 +31,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
                 <FieldWrapper
                     as={Form.Input}
                     errors={errors}
+                    mask='999.999.999-99'
                     name={USER_FIELDS.CPF}
                     label={USER_LABELS.CPF}
                     placeholder={USER_PLACEHOLDERS.CPF}

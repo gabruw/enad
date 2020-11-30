@@ -4,10 +4,21 @@ import 'assets/css/fonts.css';
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import styles from './styles.module.css';
+import InputMask from 'react-input-mask';
 
 //#endregion
 
-const FieldWrapper = ({ as: Component, name, errors, label, className, register, defaultValue = '', ...rest }) => {
+const FieldWrapper = ({
+    mask,
+    name,
+    label,
+    errors,
+    register,
+    className,
+    as: Component,
+    defaultValue = '',
+    ...rest
+}) => {
     const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
@@ -16,17 +27,21 @@ const FieldWrapper = ({ as: Component, name, errors, label, className, register,
                 <Controller
                     name={name}
                     defaultValue={defaultValue}
-                    render={(props) => (
-                        <Component
-                            {...props}
-                            {...rest}
-                            ref={register}
-                            variant='outlined'
-                            error={Boolean(error)}
-                            style={{ display: 'flex' }}
-                            className={styles.controller}
-                            label={<div className={styles.label}>{label}</div>}
-                        />
+                    render={(ctlrProps) => (
+                        <InputMask mask={mask} {...ctlrProps}>
+                            {() => (
+                                <Component
+                                    {...ctlrProps}
+                                    {...rest}
+                                    ref={register}
+                                    variant='outlined'
+                                    error={Boolean(error)}
+                                    style={{ display: 'flex' }}
+                                    className={styles.controller}
+                                    label={<div className={styles.label}>{label}</div>}
+                                />
+                            )}
+                        </InputMask>
                     )}
                 />
             </div>

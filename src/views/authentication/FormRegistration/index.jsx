@@ -3,6 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import User from 'assets/images/default-user.png';
 import ButtonUI from 'components/ButtonUI';
+import MessageBox from 'components/MessageBox';
 import React, { useCallback, useState } from 'react';
 import ReactFileReader from 'react-file-reader';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -27,6 +28,7 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
     const [picture, setPicture] = useState(null);
 
     const methods = useForm({
+        shouldFocusError: false,
         reValidateMode: 'onBlur',
         resolver: yupResolver(registrationSchema)
     });
@@ -40,18 +42,22 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
         async (data) => {
             data = formatRegister(data, picture);
 
-            await submitUser(data).then(async () => {
-                setCanRefresh(false);
+            await submitUser(data).then(async (userResponse) => {
+                if (userResponse.success) {
+                    setCanRefresh(false);
+                    data = formatLogin(data);
 
-                data = formatLogin(data);
-                await fecthLogin(data).then((response) => {
-                    addUser(response.data);
-                    history.push(ROUTE_NAME.IN.HOME);
-                });
+                    await fecthLogin(data).then((loginResponse) => {
+                        addUser(loginResponse.data);
+                        history.push(ROUTE_NAME.IN.HOME);
+                    });
+                }
             });
         },
         [picture, submitUser, setCanRefresh, fecthLogin, addUser, history]
     );
+
+    console.log('requestState', requestState);
 
     return (
         <div>
@@ -91,6 +97,8 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
                     </div>
                 </Form>
             </FormProvider>
+
+            <MessageBox list={requestState.errors} header='Erro ao efetuar o registro' error />
         </div>
     );
 };
