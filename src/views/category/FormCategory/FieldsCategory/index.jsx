@@ -12,6 +12,7 @@ import styles from './styles.module.css';
 const FieldsCategory = ({ errors }) => (
     <div className={styles.field}>
         <FieldWrapper
+            required
             as={Form.Input}
             errors={errors}
             name={CATEGORY_FIELDS.DESCRIPTION}

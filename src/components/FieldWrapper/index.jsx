@@ -3,8 +3,8 @@
 import 'assets/css/fonts.css';
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
-import styles from './styles.module.css';
 import InputMask from 'react-input-mask';
+import styles from './styles.module.css';
 
 //#endregion
 
@@ -14,6 +14,7 @@ const FieldWrapper = ({
     label,
     errors,
     register,
+    required,
     className,
     as: Component,
     defaultValue = '',
@@ -38,7 +39,11 @@ const FieldWrapper = ({
                                     error={Boolean(error)}
                                     style={{ display: 'flex' }}
                                     className={styles.controller}
-                                    label={<div className={styles.label}>{label}</div>}
+                                    label={
+                                        <div className={styles.label}>
+                                            {label} {required && <div className={styles.required}>*</div>}
+                                        </div>
+                                    }
                                 />
                             )}
                         </InputMask>

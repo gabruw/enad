@@ -18,6 +18,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
     <Fragment>
         <div className={styles.field}>
             <FieldWrapper
+                required
                 as={Form.Input}
                 errors={errors}
                 name={USER_FIELDS.NAME}
@@ -29,6 +30,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
         <div className={styles.row}>
             <div className={styles.halfField}>
                 <FieldWrapper
+                    required
                     as={Form.Input}
                     errors={errors}
                     mask='999.999.999-99'
@@ -40,6 +42,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
 
             <div className={styles.halfField}>
                 <FieldWrapper
+                    required
                     as={DateField}
                     errors={errors}
                     setValue={setValue}
@@ -51,6 +54,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
 
         <div className={styles.field}>
             <FieldWrapper
+                required
                 as={Form.Input}
                 errors={errors}
                 name={AUTHENTICATION_FIELDS.EMAIL}
@@ -61,6 +65,7 @@ const FieldsRegistration = ({ setValue, errors }) => (
 
         <div className={styles.field}>
             <FieldWrapper
+                required
                 type='password'
                 as={Form.Input}
                 errors={errors}

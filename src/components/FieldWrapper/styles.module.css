@@ -19,7 +19,14 @@
 
 .label {
     font-size: 14;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-family: Geomanist-Medium;
+}
+
+.required {
+    color: red;
 }
 
 .error {

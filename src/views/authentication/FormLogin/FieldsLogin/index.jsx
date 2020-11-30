@@ -14,6 +14,7 @@ const FieldsLogin = ({ errors }) => (
     <Fragment>
         <div className={styles.field}>
             <FieldWrapper
+                required
                 as={Form.Input}
                 errors={errors}
                 name={AUTHENTICATION_FIELDS.EMAIL}
@@ -24,6 +25,7 @@ const FieldsLogin = ({ errors }) => (
 
         <div className={styles.field}>
             <FieldWrapper
+                required
                 type='password'
                 as={Form.Input}
                 errors={errors}
