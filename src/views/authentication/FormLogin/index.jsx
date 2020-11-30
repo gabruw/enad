@@ -53,8 +53,8 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
 
                     <div className={styles.button}>
                         <ButtonUI
-                            type='submit'
                             width='100%'
+                            type='submit'
                             height='40px'
                             fontSize='16px'
                             isLoading={requestState.isLoading}

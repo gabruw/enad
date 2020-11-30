@@ -14,14 +14,17 @@ import Login from './FormLogin';
 import FormRegistration from './FormRegistration';
 import { refresh } from './services/get-data';
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 //#endregion
 
 const Authentication = () => {
     const history = useHistory();
-    const [canRefresh, setCanRefresh] = useState(true);
-    const [isLogin, setIsLogin] = useState(true);
     const { user, addUser, removeUser } = useSystemContext();
+
+    const [isLogin, setIsLogin] = useState(true);
+    const [canRefresh, setCanRefresh] = useState(true);
+    const segmentClass = clsx(styles.segment, { [styles.segmentLg]: !isLogin });
 
     const { run, requestState } = useRequestState();
     const fetchToken = useCallback(() => run(() => refresh()), [run]);
@@ -47,7 +50,7 @@ const Authentication = () => {
         <div className={styles.content}>
             <ScreenLoader isLoading={requestState.isLoading} />
 
-            <Segment className={styles.segment}>
+            <Segment className={segmentClass}>
                 <div className={styles.context}>
                     {isLogin ? (
                         <Login setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />

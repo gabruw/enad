@@ -14,40 +14,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: height 1s;
+}
+
+.segmentLg {
+    height: 90vh;
 }
 
 @media only screen and (max-width: 1350px) {
-    .segment {
+    .segment.segmentLg {
         width: 50%;
     }
 }
 
 @media only screen and (max-width: 900px) {
-    .segment {
+    .segment.segmentLg {
         width: 60%;
     }
 }
 
 @media only screen and (max-width: 720px) {
-    .segment {
+    .segment.segmentLg {
         width: 65%;
     }
 }
 
 @media only screen and (max-width: 650px) {
-    .segment {
+    .segment.segmentLg {
         width: 75%;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .segment {
+    .segment.segmentLg {
         width: 85%;
     }
 }
 
 @media only screen and (max-width: 400px) {
-    .segment {
+    .segment.segmentLg {
         width: 95%;
     }
 }
