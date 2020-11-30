@@ -1,5 +1,6 @@
 //#region Imports
 
+import clsx from 'clsx';
 import ScreenLoader from 'components/ScreenLoader';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -14,7 +15,6 @@ import Login from './FormLogin';
 import FormRegistration from './FormRegistration';
 import { refresh } from './services/get-data';
 import styles from './styles.module.css';
-import clsx from 'clsx';
 
 //#endregion
 

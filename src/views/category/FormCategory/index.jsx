@@ -10,7 +10,7 @@ import useCategoryContext from 'storage/category/context';
 import editMerge from 'utils/functions/editMerge';
 import useRequestState from 'utils/hooks/useRequestState';
 import { editCategory, includeCategory } from '../services/send-data';
-import FieldsCategory from './../FieldsCategory';
+import FieldsCategory from './FieldsCategory';
 import categorySchema from './schema';
 
 //#endregion
