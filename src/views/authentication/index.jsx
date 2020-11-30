@@ -10,10 +10,10 @@ import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import USER_FIELDS from 'utils/constants/field/user';
 import secureStorage from 'utils/functions/secureStorage';
 import useRequestState from 'utils/hooks/useRequestState';
-import Login from './login';
+import Login from './FormLogin';
+import FormRegistration from './FormRegistration';
 import { refresh } from './services/get-data';
 import styles from './styles.module.css';
-import Registration from './registration/index';
 
 //#endregion
 
@@ -48,11 +48,13 @@ const Authentication = () => {
             <ScreenLoader isLoading={requestState.isLoading} />
 
             <Segment className={styles.segment}>
-                {isLogin ? (
-                    <Login setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
-                ) : (
-                    <Registration setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
-                )}
+                <div className={styles.context}>
+                    {isLogin ? (
+                        <Login setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
+                    ) : (
+                        <FormRegistration setCanRefresh={setCanRefresh} setIsLogin={setIsLogin} />
+                    )}
+                </div>
             </Segment>
         </div>
     );

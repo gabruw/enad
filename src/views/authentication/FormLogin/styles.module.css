@@ -1,35 +1,15 @@
-.imageContent {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+.form {
+    width: 100%;
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 50px;
 }
 
 .image {
-    width: 100%;
-}
-
-.circular {
-    width: 10vw;
+    width: 15vw;
     height: 20vh;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.field {
-    width: 100%;
-    padding: 8px 0px;
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.halfField {
-    width: 48%;
-    padding: 8px 0px;
 }
 
 .button {
