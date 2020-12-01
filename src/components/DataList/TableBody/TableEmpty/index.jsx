@@ -1,9 +1,8 @@
 //#region Imports
 
-import React, { useCallback } from 'react';
-import { Button, Icon, Table } from 'semantic-ui-react';
-import styles from './styles.module.css';
 import Loading from 'assets/images/table-loading.gif';
+import React from 'react';
+import styles from './styles.module.css';
 
 //#endregion
 
