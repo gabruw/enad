@@ -3,7 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Logo from 'assets/images/logo.png';
 import ButtonUI from 'components/ButtonUI';
-import React, { useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import ROUTE_NAME from 'routes/route-name';
@@ -42,7 +42,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
     );
 
     return (
-        <div>
+        <Fragment>
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <div className={styles.logo}>
@@ -71,7 +71,7 @@ const Login = ({ setCanRefresh, setIsLogin }) => {
                     </div>
                 </Form>
             </FormProvider>
-        </div>
+        </Fragment>
     );
 };
 
