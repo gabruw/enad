@@ -40,7 +40,7 @@ const Provider = () => {
                 title='Categorias'
                 isLoading={loading}
                 onClick={() => show()}
-                buttonText='Adicionar Categoria'
+                buttonText='Adicionar categoria'
                 fetch={() => researchCategories()}
             >
                 <DataList

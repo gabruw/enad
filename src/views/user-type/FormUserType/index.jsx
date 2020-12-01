@@ -6,29 +6,29 @@ import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Form } from 'semantic-ui-react';
-import useCategoryContext from 'storage/category/context';
-import CATEGORY_FIELDS from 'utils/constants/field/category';
+import useUserTypeContext from 'storage/user-type/context';
+import USER_TYPE_FIELDS from 'utils/constants/field/user-type';
 import editMerge from 'utils/functions/editMerge';
 import useRequestState from 'utils/hooks/useRequestState';
-import { editCategory, includeCategory } from '../services/send-data';
-import FieldsCategory from './FieldsCategory';
-import categorySchema from './schema';
+import { editUserType, includeUserType } from '../services/send-data';
+import FieldsUserType from './FieldsUserType';
+import userTypeSchema from './schema';
 
 //#endregion
 
-const FormCategory = () => {
+const FormUserType = () => {
     const { run, requestState } = useRequestState();
-    const { hasSelected, selected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
+    const { hasSelected, selected, modalRef, hide, setSelected, researchUserType } = useUserTypeContext();
 
     const methods = useForm({
         reValidateMode: 'onBlur',
-        resolver: yupResolver(categorySchema)
+        resolver: yupResolver(userTypeSchema)
     });
     const { handleSubmit, setValue, getValues, errors } = methods;
 
     useEffect(() => {
-        if (selected && !getValues(CATEGORY_FIELDS.DESCRIPTION)) {
-            setValue(CATEGORY_FIELDS.DESCRIPTION, selected[CATEGORY_FIELDS.DESCRIPTION]);
+        if (selected && !getValues(USER_TYPE_FIELDS.NAME)) {
+            setValue(USER_TYPE_FIELDS.NAME, selected[USER_TYPE_FIELDS.NAME]);
         }
     }, [selected, getValues, setValue]);
 
@@ -36,28 +36,28 @@ const FormCategory = () => {
         async (data) => {
             if (hasSelected) {
                 data = editMerge(data, selected);
-                await run(() => editCategory(data));
+                await run(() => editUserType(data));
             } else {
-                await run(() => includeCategory(data));
+                await run(() => includeUserType(data));
             }
 
-            researchCategories();
+            researchUserType();
             hide();
         },
-        [hasSelected, selected, run, researchCategories, hide]
+        [hasSelected, selected, run, researchUserType, hide]
     );
 
     return (
         <ModalCrudUI
             ref={modalRef}
-            title='Categoria'
             isEdit={hasSelected}
+            title='Tipo de usuário'
             onClose={() => setSelected()}
             onConfirm={handleSubmit(onSubmit)}
         >
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <FieldsCategory errors={errors} />
+                    <FieldsUserType errors={errors} />
 
                     <MessageBox list={requestState.errors} error />
                 </Form>
@@ -66,4 +66,4 @@ const FormCategory = () => {
     );
 };
 
-export default FormCategory;
+export default FormUserType;
