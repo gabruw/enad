@@ -3,7 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import MessageBox from 'components/MessageBox';
 import ModalCrudUI from 'containers/ModalCrudUI';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Form } from 'semantic-ui-react';
 import useCategoryContext from 'storage/category/context';
@@ -19,14 +19,17 @@ const FormCategory = () => {
     const { run, requestState } = useRequestState();
     const { hasSelected, selected, modalRef, hide, setSelected, researchCategories } = useCategoryContext();
 
-    console.log('selected', selected);
-
     const methods = useForm({
-        defaultValues: selected,
         reValidateMode: 'onBlur',
         resolver: yupResolver(categorySchema)
     });
-    const { handleSubmit, errors } = methods;
+    const { handleSubmit, setValue, getValues, errors } = methods;
+
+    useEffect(() => {
+        if (selected && !getValues('description')) {
+            setValue('description', selected.description);
+        }
+    }, [selected, getValues, setValue]);
 
     const onSubmit = useCallback(
         async (data) => {
