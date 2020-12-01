@@ -10,7 +10,7 @@ import ROUTE_NAME from 'routes/route-name';
 
 const useCheckCredentials = () => {
     const history = useHistory();
-    const { user } = useSystemContext();
+    const { user, setRequestError } = useSystemContext();
 
     const canEnter = useCallback(() => {
         const isntSystemRoute = verifyRoute();
@@ -18,9 +18,10 @@ const useCheckCredentials = () => {
             return true;
         }
 
+        setRequestError(401);
         history.push(ROUTE_NAME.OUT.ERROR);
         return false;
-    }, [user, history]);
+    }, [user, setRequestError, history]);
 
     return { canEnter };
 };
