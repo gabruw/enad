@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import User from 'assets/images/default-user.png';
 import ButtonUI from 'components/ButtonUI';
 import MessageBox from 'components/MessageBox';
-import React, { useCallback, useState } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import ReactFileReader from 'react-file-reader';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
@@ -57,20 +57,20 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
         [picture, submitUser, setCanRefresh, fecthLogin, addUser, history]
     );
 
-    console.log('requestState', requestState);
-
     return (
-        <div>
+        <Fragment>
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                     <div className={styles.imageContent}>
                         <div className={styles.circular}>
-                            <img src={User} className={styles.image} alt='user' />
+                            <img src={picture || User} className={styles.image} alt='user' />
                         </div>
 
                         <div className={styles.button}>
                             <ReactFileReader fileTypes={IMAGE_TYPES} handleFiles={(e) => setPicture(e.base64)} base64>
-                                <ButtonUI color='secondary'>Adicionar Imagem</ButtonUI>
+                                <ButtonUI type='button' color='secondary' startIcon='camera'>
+                                    Adicionar Imagem
+                                </ButtonUI>
                             </ReactFileReader>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ const FormRegistration = ({ setCanRefresh, setIsLogin }) => {
             </FormProvider>
 
             <MessageBox list={requestState.errors} header='Erro ao efetuar o registro' error />
-        </div>
+        </Fragment>
     );
 };
 

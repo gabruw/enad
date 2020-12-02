@@ -5,7 +5,7 @@ import AUTHENTICATION_FIELDS from 'utils/constants/field/authentication';
 import USER_FIELDS from 'utils/constants/field/user';
 import AUTHENTICATION_LABELS from 'utils/constants/label/authentication';
 import USER_LABELS from 'utils/constants/label/user';
-import yup, { emptyStringToUndefined } from 'utils/validations/yup';
+import yup from 'utils/validations/yup';
 
 //#endregion
 
@@ -17,12 +17,8 @@ const registrationSchema = yup.object().shape({
     [USER_FIELDS.BIRTH]: yup
         .string()
         .required()
-        .transform(emptyStringToUndefined)
         .max(10)
-        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => {
-            console.log('value', value);
-            return moment().diff(value, 'years') > 18;
-        })
+        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => moment(value, 'DD/MM/YYYY').fromNow())
         .label(USER_LABELS.BIRTH)
 });
 
