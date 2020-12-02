@@ -37,6 +37,11 @@ const ROUTES = [
     },
     {
         exact: true,
+        path: ROUTE_NAME.IN.USER_CONFIGURATION,
+        component: require('../views/authentication').default
+    },
+    {
+        exact: true,
         path: ROUTE_NAME.IN.USER_TYPE,
         component: require('../views/user-type').default
     },

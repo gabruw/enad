@@ -10,6 +10,7 @@ const ROUTE_NAME = {
         HOME: '/system/home',
         USER: '/system/user',
         CATEGORY: '/system/category',
+        USER_CONFIGURATION: '/system/user-configuration',
         USER_TYPE: '/system/user-type'
     }
 };
