@@ -18,7 +18,10 @@ const registrationSchema = yup.object().shape({
         .string()
         .required()
         .max(10)
-        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => moment(value, 'DD/MM/YYYY').fromNow())
+        .test('Idade', 'A idade deve ser superior a 18 anos', (value) => {
+            const date = moment(value).format('DD/MM/YYYY');
+            return moment(date).fromNow();
+        })
         .label(USER_LABELS.BIRTH)
 });
 

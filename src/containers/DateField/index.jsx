@@ -32,7 +32,7 @@ const DateField = ({ errors, label, className, setValue, name, ...rest }) => {
                 autoComplete='off'
                 iconPosition='left'
                 className={className}
-                dateFormat='DD/MM/yyyy'
+                dateFormat='DD/MM/YYYY'
                 preserveViewMode={false}
                 popupPosition='bottom right'
                 clearIcon={<Icon name='remove' color='red' />}
