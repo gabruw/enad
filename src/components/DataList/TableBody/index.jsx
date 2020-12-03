@@ -18,7 +18,7 @@ const TableBody = ({ headers, data, edit, isLoading, setSelectedId, show }) => {
 
     return (
         <Table.Body>
-            {data ? (
+            {data && data.length > 0 ? (
                 data.map((obj, dIndex) => (
                     <Table.Row key={dIndex}>
                         {headers.map(

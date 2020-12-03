@@ -11,9 +11,7 @@ import ENDPOINT from './endpoint';
 const API = axios.create({
     baseURL: ENDPOINT.BASE,
     headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, PATCH, OPTIONS'
+        'Access-Control-Allow-Origin': '*'
     }
 });
 

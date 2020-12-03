@@ -5,6 +5,6 @@ import SUBJECT_LABELS from 'utils/constants/label/subject';
 
 //#endregion
 
-const DATA_GRID_HEADER_SUBJECT = [{ label: SUBJECT_LABELS.DESCRIPTION, field: SUBJECT_FIELDS.DESCRIPTION }];
+const DATA_GRID_HEADER_SUBJECT = [{ label: SUBJECT_LABELS.NAME, field: SUBJECT_FIELDS.NAME }];
 
 export default DATA_GRID_HEADER_SUBJECT;
