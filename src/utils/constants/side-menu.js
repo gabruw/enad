@@ -27,7 +27,7 @@ const SIDEMENU_OPTIONS = [
     },
     {
         text: 'Questões',
-        icon: '',
+        icon: 'question',
         path: ROUTE_NAME.IN.QUESTION
     },
     {
