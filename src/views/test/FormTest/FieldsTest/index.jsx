@@ -1,8 +1,8 @@
 //#region Imports
 
 import FieldWrapper from 'components/FieldWrapper';
+import DateField from 'containers/DateField';
 import React, { Fragment } from 'react';
-import { Form } from 'semantic-ui-react';
 import TEST_FIELDS from 'utils/constants/field/test';
 import TEST_LABELS from 'utils/constants/label/test';
 
@@ -10,15 +10,7 @@ import TEST_LABELS from 'utils/constants/label/test';
 
 const FieldsTest = ({ errors }) => (
     <Fragment>
-        <FieldWrapper required as={Form.Input} errors={errors} name={TEST_FIELDS.NAME} label={TEST_LABELS.NAME} />
-
-        <FieldWrapper
-            required
-            as={Form.Input}
-            errors={errors}
-            name={TEST_FIELDS.DESCRIPTION}
-            label={TEST_LABELS.DESCRIPTION}
-        />
+        <FieldWrapper required as={DateField} errors={errors} name={TEST_FIELDS.DATE} label={TEST_LABELS.DATE} />
     </Fragment>
 );
 

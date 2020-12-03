@@ -1,7 +1,6 @@
 const TEST_FIELDS = {
     THIS: 'test',
-    NAME: 'name',
-    DESCRIPTION: 'description'
+    DATE: 'date'
 };
 
 export default TEST_FIELDS;

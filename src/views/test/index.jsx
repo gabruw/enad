@@ -36,11 +36,11 @@ const Provider = () => {
             <FormTest />
 
             <ContextBox
-                icon='list'
                 title='Provas'
                 isLoading={loading}
                 onClick={() => show()}
                 buttonText='Adicionar prova'
+                icon='file alternate outline'
                 fetch={() => researchTests()}
             >
                 <DataList

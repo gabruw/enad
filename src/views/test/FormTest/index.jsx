@@ -21,6 +21,7 @@ const FormTest = () => {
     const { hasSelected, selected, modalRef, hide, setSelected, researchTests } = useTestContext();
 
     const methods = useForm({
+        shouldFocusError: false,
         reValidateMode: 'onBlur',
         resolver: yupResolver(testSchema)
     });
