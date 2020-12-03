@@ -6,30 +6,29 @@ import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { useCallback, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Form } from 'semantic-ui-react';
-import useTestContext from 'storage/test/context';
-import TEST_FIELDS from 'utils/constants/field/test';
+import useSubjectContext from 'storage/subject/context';
+import SUBJECT_FIELDS from 'utils/constants/field/subject';
 import editMerge from 'utils/functions/editMerge';
 import useRequestState from 'utils/hooks/useRequestState';
-import { editTest, includeTest } from '../services/send-data';
-import FieldsTest from './FieldsTest';
-import testSchema from './schema';
+import { editSubject, includeSubject } from '../services/send-data';
+import FieldsSubject from './FieldsSubject';
+import subjectSchema from './schema';
 
 //#endregion
 
-const FormTest = () => {
+const FormSubject = () => {
     const { run, requestState } = useRequestState();
-    const { hasSelected, selected, modalRef, hide, setSelected, researchTests } = useTestContext();
+    const { hasSelected, selected, modalRef, hide, setSelected, researchSubjects } = useSubjectContext();
 
     const methods = useForm({
-        shouldFocusError: false,
         reValidateMode: 'onBlur',
-        resolver: yupResolver(testSchema)
+        resolver: yupResolver(subjectSchema)
     });
     const { handleSubmit, setValue, getValues, errors } = methods;
 
     useEffect(() => {
-        if (selected && !getValues(TEST_FIELDS.DATE)) {
-            setValue(TEST_FIELDS.DATE, selected[TEST_FIELDS.DATE]);
+        if (selected && !getValues(SUBJECT_FIELDS.NAME)) {
+            setValue(SUBJECT_FIELDS.NAME, selected[SUBJECT_FIELDS.NAME]);
         }
     }, [selected, getValues, setValue]);
 
@@ -37,28 +36,28 @@ const FormTest = () => {
         async (data) => {
             if (hasSelected) {
                 data = editMerge(data, selected);
-                await run(() => editTest(data));
+                await run(() => editSubject(data));
             } else {
-                await run(() => includeTest(data));
+                await run(() => includeSubject(data));
             }
 
-            researchTests();
+            researchSubjects();
             hide();
         },
-        [hasSelected, selected, run, researchTests, hide]
+        [hasSelected, selected, run, researchSubjects, hide]
     );
 
     return (
         <ModalCrudUI
             ref={modalRef}
-            title='Prova'
+            title='Assunto'
             isEdit={hasSelected}
             onClose={() => setSelected()}
             onConfirm={handleSubmit(onSubmit)}
         >
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <FieldsTest errors={errors} />
+                    <FieldsSubject errors={errors} />
 
                     <MessageBox list={requestState.errors} error />
                 </Form>
@@ -67,4 +66,4 @@ const FormTest = () => {
     );
 };
 
-export default FormTest;
+export default FormSubject;

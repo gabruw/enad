@@ -55,6 +55,10 @@ const ROUTES = [
         component: require('../views/question').default
     },
     {
+        path: ROUTE_NAME.IN.SUBJECT,
+        component: require('../views/subject').default
+    },
+    {
         path: '*',
         exact: true,
         component: require('../views/error').default

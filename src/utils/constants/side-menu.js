@@ -29,6 +29,11 @@ const SIDEMENU_OPTIONS = [
         text: 'Questões',
         icon: '',
         path: ROUTE_NAME.IN.QUESTION
+    },
+    {
+        text: 'Assuntos',
+        icon: 'sticky note outline',
+        path: ROUTE_NAME.IN.SUBJECT
     }
 ];
 

@@ -22,6 +22,13 @@ const ENDPOINT = {
         REMOVE: (id) => `/test/remove/${id}`,
         FIND_ALL: (page, order, direction) => `/test/find-all?${buildQueryParams({ page, order, direction })}`
     },
+    SUBJECT: {
+        EDIT: '/subject/edit',
+        INCLUDE: '/subject/include',
+        FIND: (id) => `/subject/find/${id}`,
+        REMOVE: (id) => `/subject/remove/${id}`,
+        FIND_ALL: (page, order, direction) => `/subject/find-all?${buildQueryParams({ page, order, direction })}`
+    },
     CATEGORY: {
         EDIT: '/category/edit',
         INCLUDE: '/category/include',
