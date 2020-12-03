@@ -1,0 +1,15 @@
+.field {
+    width: 100%;
+    padding: 8px 0px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.halfField {
+    width: 48%;
+    padding: 8px 0px;
+}

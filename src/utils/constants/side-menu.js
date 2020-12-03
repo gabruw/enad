@@ -24,6 +24,11 @@ const SIDEMENU_OPTIONS = [
         text: 'Provas',
         icon: 'file alternate outline',
         path: ROUTE_NAME.IN.TEST
+    },
+    {
+        text: 'Questões',
+        icon: '',
+        path: ROUTE_NAME.IN.QUESTION
     }
 ];
 
