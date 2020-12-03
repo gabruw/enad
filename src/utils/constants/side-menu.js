@@ -21,7 +21,7 @@ const SIDEMENU_OPTIONS = [
         path: ROUTE_NAME.IN.USER_TYPE
     },
     {
-        text: 'Testes',
+        text: 'Provas',
         icon: 'file alternate outline',
         path: ROUTE_NAME.IN.TEST
     }
