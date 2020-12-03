@@ -4,7 +4,6 @@ import React, { Fragment, useCallback, useEffect } from 'react';
 import useQuestionContext, { QuestionContextProvider } from 'storage/question/context';
 import FormQuestion from './FormQuestion';
 import DGH_QUESTION from './services/data-grid';
-import { removeQuestion } from './services/send-data';
 
 const Question = () => (
     <QuestionContextProvider>
@@ -45,7 +44,6 @@ const Provider = () => {
                     isLoading={loading}
                     pageable={pageable}
                     headers={DGH_QUESTION}
-                    remove={removeQuestion}
                     fetch={researchQuestions}
                 />
             </ContextBox>

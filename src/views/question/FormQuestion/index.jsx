@@ -4,11 +4,12 @@ import ModalCrudUI from 'containers/ModalCrudUI';
 import React, { useCallback } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Form } from 'semantic-ui-react';
-import editMerge from 'utils/functions/editMerge';
-import useRequestState from 'utils/hooks/useRequestState';
-import FieldsQuestion from './FieldsQuestion';
-import { editQuestion, includeQuestion } from './../services/send-data';
 import useQuestionContext from 'storage/question/context';
+import useRequestState from 'utils/hooks/useRequestState';
+import { includeQuestion } from './../services/send-data';
+import FieldsAnswer from './FieldsAnswer';
+import FieldsQuestion from './FieldsQuestion';
+import questionSchema from './schema';
 
 const FormQuestion = () => {
     const { run, requestState } = useRequestState();
@@ -17,22 +18,20 @@ const FormQuestion = () => {
     const methods = useForm({
         defaultValues: selected,
         reValidateMode: 'onBlur',
-        resolver: yupResolver()
+        resolver: yupResolver(questionSchema),
+        shouldFocusError: false
     });
 
     const { handleSubmit, errors } = methods;
+    console.log(errors);
 
     const onSubmit = useCallback(
         async (data) => {
-            if (hasSelected) {
-                data = editMerge(data, selected);
-                await run(() => editQuestion(data));
-            } else {
-                await run(() => includeQuestion(data));
-            }
+            await run(() => includeQuestion(data));
 
             researchQuestions();
             hide();
+            console.log(data);
         },
         [hasSelected, selected, run, researchQuestions, hide]
     );
@@ -48,7 +47,7 @@ const FormQuestion = () => {
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FieldsQuestion errors={errors} />
-                    {/* <FieldAnswers/>   */}
+                    <FieldsAnswer errors={errors} />
                     <MessageBox list={requestState.errors} error />
                 </Form>
             </FormProvider>
