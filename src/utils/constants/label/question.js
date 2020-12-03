@@ -3,7 +3,7 @@ const QUESTION_LABELS = {
     DESCRIPTION: 'Descrição',
     ANSWER: 'Alternativa',
     CORRECT: 'Resposta Correta',
-    LEVEL: 'Nível da Questão',
+    LEVEL: 'Nível da Questão'
 };
 
 export default QUESTION_LABELS;

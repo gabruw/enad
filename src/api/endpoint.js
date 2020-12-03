@@ -42,6 +42,11 @@ const ENDPOINT = {
         FIND: (id) => `/user-type/find/${id}`,
         REMOVE: (id) => `/user-type/remove/${id}`,
         FIND_ALL: (page, order, direction) => `/user-type/find-all?${buildQueryParams({ page, order, direction })}`
+    },
+    QUESTION: {
+        INCLUDE: '/question/include',
+        FIND: (id) => `/question/find/${id}`,
+        FIND_ALL: (page, order, direction) => `/question/find-all?${buildQueryParams({ page, order, direction })}`
     }
 };
 
