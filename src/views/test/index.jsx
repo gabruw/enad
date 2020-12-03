@@ -17,11 +17,11 @@ const Test = () => (
 );
 
 const Provider = () => {
-    const { test, show, pageable, setSelected, loading, researchTest } = useTestContext();
+    const { test, show, pageable, setSelected, loading, researchTests } = useTestContext();
 
     useEffect(() => {
-        researchTest();
-    }, [researchTest]);
+        researchTests();
+    }, [researchTests]);
 
     const edit = useCallback(
         (id) => {
@@ -41,7 +41,7 @@ const Provider = () => {
                 isLoading={loading}
                 onClick={() => show()}
                 buttonText='Adicionar prova'
-                fetch={() => researchTest()}
+                fetch={() => researchTests()}
             >
                 <DataList
                     edit={edit}
@@ -50,7 +50,7 @@ const Provider = () => {
                     isLoading={loading}
                     pageable={pageable}
                     remove={removeTest}
-                    fetch={researchTest}
+                    fetch={researchTests}
                 />
             </ContextBox>
         </Fragment>

@@ -18,7 +18,7 @@ import testSchema from './schema';
 
 const FormTest = () => {
     const { run, requestState } = useRequestState();
-    const { hasSelected, selected, modalRef, hide, setSelected, researchCategories } = useTestContext();
+    const { hasSelected, selected, modalRef, hide, setSelected, researchTests } = useTestContext();
 
     const methods = useForm({
         reValidateMode: 'onBlur',
@@ -42,10 +42,10 @@ const FormTest = () => {
                 await run(() => includeTest(data));
             }
 
-            researchCategories();
+            researchTests();
             hide();
         },
-        [hasSelected, selected, run, researchCategories, hide]
+        [hasSelected, selected, run, researchTests, hide]
     );
 
     return (

@@ -6,8 +6,8 @@ import TEST_FIELDS from 'utils/constants/field/test';
 //#endregion
 
 const DATA_GRID_HEADER_TEST = [
-    { label: TEST_FIELDS.NAME, field: TEST_LABELS.NAME },
-    { label: TEST_FIELDS.DESCRIPTION, field: TEST_LABELS.DESCRIPTION }
+    { label: TEST_LABELS.NAME, field: TEST_FIELDS.NAME },
+    { label: TEST_LABELS.DESCRIPTION, field: TEST_FIELDS.DESCRIPTION }
 ];
 
 export default DATA_GRID_HEADER_TEST;
