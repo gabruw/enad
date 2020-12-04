@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 //#endregion
 
-const CollapseContent = ({ maxItems, children, hideField, minItems = 1, actualItem = 1 }) => {
+const CollapseContent = ({ maxItems, children, hideField, minItems = 1, actualItem = 1, name, label }) => {
     const [actual, setActual] = useState(actualItem);
 
     const disabledMin = useMemo(() => actual === minItems || hideField, [actual, minItems, hideField]);
@@ -20,7 +20,9 @@ const CollapseContent = ({ maxItems, children, hideField, minItems = 1, actualIt
         <Fragment>
             <div className={styles.content}>
                 <div className={styles.array}>
-                    {Array.apply(null, { length: actual }).map((_, index) => children({ index }))}
+                    {Array.apply(null, { length: actual }).map((_, index) =>
+                        children({ index, name: `${name}.${index}`, label: `${label} ${index + 1}` })
+                    )}
                 </div>
 
                 <div className={styles.buttons}>

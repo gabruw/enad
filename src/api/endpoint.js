@@ -32,6 +32,7 @@ const ENDPOINT = {
     CATEGORY: {
         EDIT: '/category/edit',
         INCLUDE: '/category/include',
+        OPTIONS: '/category/find-options',
         FIND: (id) => `/category/find/${id}`,
         REMOVE: (id) => `/category/remove/${id}`,
         FIND_ALL: (page, order, direction) => `/category/find-all?${buildQueryParams({ page, order, direction })}`

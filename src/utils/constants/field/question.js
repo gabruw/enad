@@ -1,9 +1,10 @@
 const QUESTION_FIELDS = {
     THIS: 'question',
-    DESCRIPTION: 'description',
+    LEVEL: 'level',
     ANSWER: 'answer',
     CORRECT: 'correct',
-    LEVEL: 'level',
+    CATEGORIES: 'categories',
+    DESCRIPTION: 'description'
 };
 
 export default QUESTION_FIELDS;

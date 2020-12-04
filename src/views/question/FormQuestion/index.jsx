@@ -13,17 +13,16 @@ import questionSchema from './schema';
 
 const FormQuestion = () => {
     const { run, requestState } = useRequestState();
-    const { hasSelected, selected, modalRef, hide, setSelected, researchQuestions } = useQuestionContext(); // contextQuestion
+    const { hasSelected, selected, modalRef, hide, setSelected, researchQuestions } = useQuestionContext();
 
     const methods = useForm({
         defaultValues: selected,
+        shouldFocusError: false,
         reValidateMode: 'onBlur',
-        resolver: yupResolver(questionSchema),
-        shouldFocusError: false
+        resolver: yupResolver(questionSchema)
     });
 
     const { handleSubmit, errors } = methods;
-    console.log(errors);
 
     const onSubmit = useCallback(
         async (data) => {
@@ -31,7 +30,6 @@ const FormQuestion = () => {
 
             researchQuestions();
             hide();
-            console.log(data);
         },
         [hasSelected, selected, run, researchQuestions, hide]
     );
@@ -48,6 +46,7 @@ const FormQuestion = () => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FieldsQuestion errors={errors} />
                     <FieldsAnswer errors={errors} />
+
                     <MessageBox list={requestState.errors} error />
                 </Form>
             </FormProvider>
