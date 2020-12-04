@@ -19,6 +19,21 @@ const SIDEMENU_OPTIONS = [
         text: 'Tipos de Usuário',
         icon: 'group',
         path: ROUTE_NAME.IN.USER_TYPE
+    },
+    {
+        text: 'Provas',
+        icon: 'file alternate outline',
+        path: ROUTE_NAME.IN.TEST
+    },
+    {
+        text: 'Questões',
+        icon: 'question',
+        path: ROUTE_NAME.IN.QUESTION
+    },
+    {
+        text: 'Assuntos',
+        icon: 'sticky note outline',
+        path: ROUTE_NAME.IN.SUBJECT
     }
 ];
 

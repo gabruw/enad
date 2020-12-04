@@ -7,4 +7,5 @@ import ENDPOINT from 'api/endpoint';
 
 export const findCategory = (id) => API.get(ENDPOINT.CATEGORY.FIND(id));
 
-export const findAllCategories = () => API.get(ENDPOINT.CATEGORY.FIND_ALL);
+export const findAllCategories = (page, order, direction) =>
+    API.get(ENDPOINT.CATEGORY.FIND_ALL(page, order, direction));

@@ -36,7 +36,7 @@ const useRequestState = () => {
 
                 responseObj = {
                     ...initalState,
-                    errors: error.response && error.response.data ? error.response.data : error
+                    errors: error.response && error.response.data ? error.response.data.errors : error
                 };
             }
 

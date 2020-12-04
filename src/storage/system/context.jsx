@@ -3,13 +3,15 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import USER_FIELDS from 'utils/constants/field/user';
 import secureStorage from 'utils/functions/secureStorage';
+import ERROR_FIELDS from 'utils/constants/field/error';
 
 //#endregion
 
 const SystemContext = createContext();
 
 const initialState = {
-    [USER_FIELDS.THIS]: null
+    [USER_FIELDS.THIS]: null,
+    [ERROR_FIELDS.THIS]: 404
 };
 
 export const SystemContextProvider = ({ children, defaultValues = {} }) => {
@@ -36,13 +38,26 @@ export const SystemContextProvider = ({ children, defaultValues = {} }) => {
         }));
     }, [setState]);
 
-    return <SystemContext.Provider value={{ addUser, removeUser, state }}>{children}</SystemContext.Provider>;
+    const setRequestError = useCallback(
+        (error = 404) =>
+            setState((prevState) => ({
+                ...prevState,
+                [ERROR_FIELDS.THIS]: error
+            })),
+        [setState]
+    );
+
+    return (
+        <SystemContext.Provider value={{ addUser, removeUser, setRequestError, state }}>
+            {children}
+        </SystemContext.Provider>
+    );
 };
 
 const useSystemContext = () => {
-    const { addUser, removeUser, state } = useContext(SystemContext);
+    const { addUser, removeUser, setRequestError, state } = useContext(SystemContext);
 
-    return { addUser, removeUser, ...state };
+    return { addUser, removeUser, setRequestError, ...state };
 };
 
 export default useSystemContext;

@@ -2,25 +2,44 @@
 
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
+import GenericField from './GenericField';
+import MaskField from './MaskField';
 import styles from './styles.module.css';
 
 //#endregion
 
-const FieldWrapper = ({ as, name, errors, label, className, ...rest }) => {
+const FieldWrapper = ({ as, mask, name, label, errors, register, required, defaultValue = '', ...rest }) => {
     const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
         <div className={styles.content}>
             <div className={styles.input}>
                 <Controller
-                    as={as}
                     name={name}
-                    defaultValue=''
-                    variant='outlined'
-                    error={Boolean(error)}
-                    className={styles.controller}
-                    label={<span className={styles.label}>{label}</span>}
-                    {...rest}
+                    defaultValue={defaultValue}
+                    render={(ctlrProps) =>
+                        mask ? (
+                            <MaskField
+                                as={as}
+                                erro={error}
+                                label={label}
+                                register={register}
+                                required={required}
+                                ctlrProps={ctlrProps}
+                                {...rest}
+                            />
+                        ) : (
+                            <GenericField
+                                as={as}
+                                erro={error}
+                                label={label}
+                                register={register}
+                                required={required}
+                                ctlrProps={ctlrProps}
+                                {...rest}
+                            />
+                        )
+                    }
                 />
             </div>
 

@@ -3,6 +3,7 @@
 import React, { useCallback } from 'react';
 import { Button, Icon, Table } from 'semantic-ui-react';
 import styles from './styles.module.css';
+import TableEmpty from './TableEmpty';
 
 //#endregion
 
@@ -12,12 +13,12 @@ const TableBody = ({ headers, data, edit, isLoading, setSelectedId, show }) => {
             setSelectedId(id);
             show();
         },
-        [setSelectedId]
+        [show, setSelectedId]
     );
 
     return (
         <Table.Body>
-            {data &&
+            {data && data.length > 0 ? (
                 data.map((obj, dIndex) => (
                     <Table.Row key={dIndex}>
                         {headers.map(
@@ -42,7 +43,10 @@ const TableBody = ({ headers, data, edit, isLoading, setSelectedId, show }) => {
                             </Button.Group>
                         </Table.Cell>
                     </Table.Row>
-                ))}
+                ))
+            ) : (
+                <TableEmpty />
+            )}
         </Table.Body>
     );
 };

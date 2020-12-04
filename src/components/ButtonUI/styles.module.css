@@ -1,3 +1,11 @@
+.button:hover > .content > i {
+    color: #f8f8f8 !important;
+}
+
+.button:hover > .content > span {
+    color: #f8f8f8 !important;
+}
+
 .content {
     display: flex;
     align-items: center;

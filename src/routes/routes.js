@@ -36,6 +36,29 @@ const ROUTES = [
         component: require('../views/category').default
     },
     {
+        exact: true,
+        path: ROUTE_NAME.IN.USER_CONFIGURATION,
+        component: require('../views/authentication').default
+    },
+    {
+        exact: true,
+        path: ROUTE_NAME.IN.USER_TYPE,
+        component: require('../views/user-type').default
+    },
+    {
+        exact: true,
+        path: ROUTE_NAME.IN.TEST,
+        component: require('../views/test').default
+    },
+    {
+        path: ROUTE_NAME.IN.QUESTION,
+        component: require('../views/question').default
+    },
+    {
+        path: ROUTE_NAME.IN.SUBJECT,
+        component: require('../views/subject').default
+    },
+    {
         path: '*',
         exact: true,
         component: require('../views/error').default

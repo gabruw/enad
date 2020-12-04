@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 
 //#endregion
 
-const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, ref) => {
+const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onConfirm }, ref) => {
     const [control, setControl] = useState(false);
 
     const handleOpen = useCallback(() => setControl(true), [setControl]);
@@ -17,11 +17,6 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, r
         show: () => handleOpen(),
         hide: () => handleClose()
     }));
-
-    const whenClick = useCallback(() => {
-        onClick && onClick();
-        handleClose();
-    }, [onClick, handleClose]);
 
     const whenOpen = useCallback(() => {
         onOpen && onOpen();
@@ -46,11 +41,11 @@ const ModalUI = ({ children, actions, title, icon, onOpen, onClose, onClick }, r
             <Modal.Actions>
                 {actions || (
                     <Fragment>
-                        <ButtonUI color='light-red' onClick={() => handleClose()}>
+                        <ButtonUI color='light-red' onClick={() => whenClose()}>
                             <Icon name='remove' /> Fechar
                         </ButtonUI>
 
-                        <ButtonUI onClick={() => whenClick()}>
+                        <ButtonUI onClick={() => onConfirm && onConfirm()}>
                             <Icon name='checkmark' /> Concluir
                         </ButtonUI>
                     </Fragment>

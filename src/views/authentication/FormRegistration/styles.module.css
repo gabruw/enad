@@ -1,0 +1,46 @@
+.form {
+    width: 100%;
+}
+
+.imageContent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 100%;
+}
+
+.circular {
+    width: 10vw;
+    height: 20vh;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.strong {
+    cursor: pointer;
+    color: #026aa7;
+    margin-left: 5px;
+}
+
+.strong:hover {
+    color: #0079bf;
+}

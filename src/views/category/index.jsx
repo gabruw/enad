@@ -2,7 +2,6 @@
 
 import ContextBox from 'components/ContextBox';
 import DataList from 'components/DataList';
-import ModalUI from 'containers/ModalUI';
 import React, { Fragment, useCallback, useEffect } from 'react';
 import useCategoryContext, { CategoryContextProvider } from 'storage/category/context';
 import FormCategory from './FormCategory';
@@ -18,37 +17,41 @@ const Category = () => (
 );
 
 const Provider = () => {
-    const { category, show, setSelected, loading, modalRef, researchCategories } = useCategoryContext();
+    const { category, show, pageable, setSelected, loading, researchCategories } = useCategoryContext();
 
     useEffect(() => {
         researchCategories();
     }, [researchCategories]);
 
-    const edit = useCallback((id) => setSelected(id), [setSelected]);
-
-    const remove = useCallback(
-        async (id) => {
-            await removeCategory(id);
-            await researchCategories();
+    const edit = useCallback(
+        (id) => {
+            setSelected(id);
+            show();
         },
-        [researchCategories]
+        [setSelected, show]
     );
 
     return (
         <Fragment>
-            <ModalUI ref={modalRef} title='Adicionar Categoria' icon='plus'>
-                <FormCategory />
-            </ModalUI>
+            <FormCategory />
 
             <ContextBox
                 icon='list'
                 title='Categorias'
                 isLoading={loading}
                 onClick={() => show()}
-                buttonText='Adicionar Categoria'
-                research={() => researchCategories()}
+                buttonText='Adicionar categoria'
+                fetch={() => researchCategories()}
             >
-                <DataList headers={DGH_CATEGORY} data={category} edit={edit} remove={remove} isLoading={loading} />
+                <DataList
+                    edit={edit}
+                    data={category}
+                    isLoading={loading}
+                    pageable={pageable}
+                    headers={DGH_CATEGORY}
+                    remove={removeCategory}
+                    fetch={researchCategories}
+                />
             </ContextBox>
         </Fragment>
     );

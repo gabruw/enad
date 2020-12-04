@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 400px;
+    height: 200px;
+}
+
+.content {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    width: 100%;
+    font-size: 35px;
+    color: #2e3732;
+    font-family: Geomanist-Medium;
+    text-align: center;
+}
+
+.text {
+    width: 100%;
+    font-size: 25px;
+    color: #c8c8c8;
+    text-align: center;
+}

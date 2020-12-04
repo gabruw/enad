@@ -1,16 +1,17 @@
 //#region Imports
 
+import clsx from 'clsx';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
 import SIDEMENU_OPTIONS from 'utils/constants/side-menu';
 import styles from './styles.module.css';
-import clsx from 'clsx';
 
 //#endregion
 
 const SideMenu = ({ children, visible, setVisible }) => {
     const history = useHistory();
+    const contentClass = clsx(styles.content, { [styles.intercept]: visible });
 
     return (
         <Sidebar.Pushable as={Segment} className={styles.pushable}>
@@ -36,7 +37,7 @@ const SideMenu = ({ children, visible, setVisible }) => {
             </Sidebar>
 
             <Sidebar.Pusher className={styles.pusher}>
-                <div className={clsx(styles.content, { [styles.intercept]: visible })}>{children}</div>
+                <div className={contentClass}>{children}</div>
             </Sidebar.Pusher>
         </Sidebar.Pushable>
     );

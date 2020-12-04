@@ -1,13 +1,67 @@
 .content {
     height: 100vh;
+    display: flex;
     overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    background-image: url('../../assets/images/login-background.png');
 }
 
-.bloco {
-    margin-left: 580px;
-    width: 500px;
-    height: 700px;
-    -webkit-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
-    -moz-box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
-    box-shadow: 0px -2px 15px 8px rgba(50, 50, 50, 0.32);
+.segment {
+    width: 30%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: height 1s;
+}
+
+.segmentLg {
+    height: 90vh;
+}
+
+@media only screen and (max-width: 1350px) {
+    .segment.segmentLg {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .segment.segmentLg {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .segment.segmentLg {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .segment.segmentLg {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .segment.segmentLg {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .segment.segmentLg {
+        width: 95%;
+    }
+}
+
+.context {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 50px;
+    align-items: center;
+    justify-content: center;
 }
