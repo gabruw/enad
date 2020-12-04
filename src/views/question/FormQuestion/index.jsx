@@ -10,6 +10,7 @@ import { includeQuestion } from './../services/send-data';
 import FieldsAnswer from './FieldsAnswer';
 import FieldsQuestion from './FieldsQuestion';
 import questionSchema from './schema';
+import { ANSWER_NAMES } from 'views/question/services/field-name';
 
 const FormQuestion = () => {
     const { run, requestState } = useRequestState();
@@ -22,10 +23,15 @@ const FormQuestion = () => {
         resolver: yupResolver(questionSchema)
     });
 
-    const { handleSubmit, errors } = methods;
+    const { handleSubmit, setError, errors } = methods;
+    console.log(errors);
 
     const onSubmit = useCallback(
         async (data) => {
+            if (!data[ANSWER_NAMES.DESCRIPTION] || data[ANSWER_NAMES.DESCRIPTION].length === 0) {
+                return setError(`${ANSWER_NAMES.DESCRIPTION}.0`, 'A pergunta deve conter pelo menos uma resposta');
+            }
+
             await run(() => includeQuestion(data));
 
             researchQuestions();

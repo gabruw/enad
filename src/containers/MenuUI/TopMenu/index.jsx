@@ -5,11 +5,23 @@ import React from 'react';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
 import AvatarTrigger from './Avatar';
 import styles from './styles.module.css';
+import { useCallback } from 'react';
+
+import secureStorage from 'utils/functions/secureStorage';
+import USER_FIELDS from 'utils/constants/field/user';
+import { useHistory } from 'react-router-dom';
+import ROUTE_NAME from 'routes/route-name';
 
 //#endregion
 
 const TopMenu = ({ setVisible }) => {
+    const history = useHistory();
     const buttonClass = clsx(styles.hoverItem, styles.hamburguerButton);
+
+    const logout = useCallback(() => {
+        secureStorage.removeItem(USER_FIELDS.THIS);
+        history.push(ROUTE_NAME.OUT.LOGIN);
+    }, [history]);
 
     return (
         <Menu stackable className={styles.menu}>
@@ -25,7 +37,7 @@ const TopMenu = ({ setVisible }) => {
                 <Dropdown item className={clsx(styles.hoverItem, styles.icon)} trigger={<AvatarTrigger />}>
                     <Dropdown.Menu>
                         <Dropdown.Header content='Configurações' icon='settings' />
-                        <Dropdown.Item>
+                        <Dropdown.Item onClick={() => logout()}>
                             <Icon name='bed' />
                             Logout
                         </Dropdown.Item>

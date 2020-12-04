@@ -1,25 +1,14 @@
 //#region Imports
 
-import 'assets/css/fonts.css';
 import React, { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
-import InputMask from 'react-input-mask';
+import GenericField from './GenericField';
+import MaskField from './MaskField';
 import styles from './styles.module.css';
 
 //#endregion
 
-const FieldWrapper = ({
-    mask,
-    name,
-    label,
-    errors,
-    register,
-    required,
-    className,
-    as: Component,
-    defaultValue = '',
-    ...rest
-}) => {
+const FieldWrapper = ({ as, mask, name, label, errors, register, required, defaultValue = '', ...rest }) => {
     const error = useMemo(() => errors && errors[name], [errors, name]);
 
     return (
@@ -28,26 +17,29 @@ const FieldWrapper = ({
                 <Controller
                     name={name}
                     defaultValue={defaultValue}
-                    render={(ctlrProps) => (
-                        <InputMask mask={mask} {...ctlrProps}>
-                            {() => (
-                                <Component
-                                    {...ctlrProps}
-                                    {...rest}
-                                    ref={register}
-                                    variant='outlined'
-                                    error={Boolean(error)}
-                                    style={{ display: 'flex' }}
-                                    className={styles.controller}
-                                    label={
-                                        <div className={styles.label}>
-                                            {label} {required && <div className={styles.required}>*</div>}
-                                        </div>
-                                    }
-                                />
-                            )}
-                        </InputMask>
-                    )}
+                    render={(ctlrProps) =>
+                        mask ? (
+                            <MaskField
+                                as={as}
+                                erro={error}
+                                label={label}
+                                register={register}
+                                required={required}
+                                ctlrProps={ctlrProps}
+                                {...rest}
+                            />
+                        ) : (
+                            <GenericField
+                                as={as}
+                                erro={error}
+                                label={label}
+                                register={register}
+                                required={required}
+                                ctlrProps={ctlrProps}
+                                {...rest}
+                            />
+                        )
+                    }
                 />
             </div>
 

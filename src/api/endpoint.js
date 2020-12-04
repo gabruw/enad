@@ -47,6 +47,7 @@ const ENDPOINT = {
     QUESTION: {
         INCLUDE: '/question/include',
         FIND: (id) => `/question/find/${id}`,
+        OPTIONS_DIFFICULTIES: '/question/find-difficulties-options',
         FIND_ALL: (page, order, direction) => `/question/find-all?${buildQueryParams({ page, order, direction })}`
     }
 };
